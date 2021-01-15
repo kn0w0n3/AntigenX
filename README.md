@@ -10,3 +10,6 @@ https://antigen-x.com/
 This goal of this project is to develop a modern antivirus application for Linux. The application will provide signature based as well as static and dynamic hueristic analysis.  Windows versions will also be released. 
 
 
+http://github.com - automatic!
+[GitHub](http://github.com)
+
