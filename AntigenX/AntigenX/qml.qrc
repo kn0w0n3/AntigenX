@@ -1,0 +1,28 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>images/AntigenX_Logo.png</file>
+        <file>images/animated_background_2.gif</file>
+        <file>images/home_btn.png</file>
+        <file>images/tools_btn.png</file>
+        <file>images/scan_btn.png</file>
+        <file>images/button_blank.png</file>
+        <file>images/scan_button.png</file>
+        <file>images/scan_dir_button.png</file>
+        <file>images/remove_selected_button.png</file>
+        <file>images/smart_scan_button.png</file>
+        <file>images/remove_all_button.png</file>
+        <file>images/abort_scan_button.png</file>
+        <file>images/antibody.png</file>
+        <file>images/display_panel.png</file>
+        <file>images/3panel.png</file>
+        <file>images/screenx.png</file>
+        <file>images/screeny.png</file>
+        <file>images/screenz.png</file>
+        <file>images/screena.png</file>
+        <file>images/bg_poly.png</file>
+        <file>images/bg_poly2.png</file>
+        <file>images/bg-grey.png</file>
+        <file>images/mx-bg-new.png</file>
+    </qresource>
+</RCC>
