@@ -1,12 +1,16 @@
-import QtQuick 2.15
-import QtQuick.Window 2.15
-//import QtQuick.Controls 2.12
+import QtQuick 2.12
+import QtQuick.Window 2.12
+import QtQuick.Controls 2.12
+import QtQml.Models 2.12
+import QtQuick.Controls.Styles 1.4
 //import com.company.maincontroller 1.0
 Window{
     width: 1280
     height: 720
     visible: true
     color: "#000000"
+    property alias progressBarText: progressBarText
+    property alias progressBar: progressBar
     property alias last_update_value: last_update_value
     property alias current_threats_value: current_threats_value
     property alias threats_found_value: threats_found_value
@@ -33,7 +37,6 @@ Window{
     property alias mouse_area_remove_selected: mouse_area_remove_selected
     property alias remove_selected_button: remove_selected_button
     property alias listView: listView
-    property alias text2: text2
     property alias sidepanel: sidepanel
     property alias rectangle: rectangle
     property alias image: image
@@ -73,10 +76,10 @@ Window{
             y: 198
             width: 520
             height: 320
-            color: "#00000000"
+            visible: false
+            color: "#e5000000"
             border.color: "#ffffff"
         }
-
 
         Image {
             id: image
@@ -90,8 +93,8 @@ Window{
 
         Text {
             id: current_report_text
-            x: 330
-            y: 159
+            x: 474
+            y: 141
             width: 203
             height: 33
             color: "#ffffff"
@@ -102,8 +105,8 @@ Window{
 
         Text {
             id: status_value
-            x: 611
-            y: 252
+            x: 570
+            y: 184
             width: 122
             height: 29
             color: "#64f336"
@@ -111,11 +114,10 @@ Window{
             font.pixelSize: 23
         }
 
-
         Text {
             id: status_text
-            x: 521
-            y: 248
+            x: 480
+            y: 180
             width: 76
             height: 33
             color: "#ffffff"
@@ -125,8 +127,8 @@ Window{
 
         Text {
             id: last_scan_text
-            x: 491
-            y: 287
+            x: 450
+            y: 219
             width: 105
             height: 33
             color: "#ffffff"
@@ -136,8 +138,8 @@ Window{
 
         Text {
             id: last_scan_value
-            x: 611
-            y: 287
+            x: 570
+            y: 219
             width: 122
             height: 33
             color: "#ffffff"
@@ -147,8 +149,8 @@ Window{
 
         Text {
             id: threats_found_text
-            x: 437
-            y: 326
+            x: 396
+            y: 258
             width: 159
             height: 33
             color: "#ffffff"
@@ -158,8 +160,8 @@ Window{
 
         Text {
             id: threats_found_value
-            x: 611
-            y: 326
+            x: 570
+            y: 258
             width: 122
             height: 28
             color: "#ffffff"
@@ -169,8 +171,8 @@ Window{
 
         Text {
             id: current_threats_text
-            x: 421
-            y: 365
+            x: 380
+            y: 297
             width: 175
             height: 33
             color: "#ffffff"
@@ -180,8 +182,8 @@ Window{
 
         Text {
             id: current_threats_value
-            x: 611
-            y: 360
+            x: 570
+            y: 292
             width: 122
             height: 33
             color: "#ffffff"
@@ -191,8 +193,8 @@ Window{
 
         Text {
             id: last_update_text
-            x: 461
-            y: 404
+            x: 420
+            y: 336
             width: 135
             height: 33
             color: "#ffffff"
@@ -200,23 +202,16 @@ Window{
             font.pixelSize: 23
         }
 
-
         Text {
             id: last_update_value
-            x: 611
-            y: 399
+            x: 570
+            y: 331
             width: 122
             height: 33
             color: "#ffffff"
             text: qsTr("01/01/2021")
             font.pixelSize: 23
         }
-
-
-
-
-
-
     }
 
     Rectangle {
@@ -242,6 +237,7 @@ Window{
                 y: 0
                 width: 66
                 height: 75
+                visible: true
                 hoverEnabled: true
                 onEntered: {
                     image1.width = 68
@@ -323,7 +319,6 @@ Window{
         }
     }
 
-
     Rectangle {
         id: scan
         x: 100
@@ -349,7 +344,8 @@ Window{
             y: 277
             width: 580
             height: 280
-            color: "#00ffffff"
+            visible: true
+            color: "#cc000000"
             border.color: "#ffffff"
 
             ObjectModel {
@@ -366,7 +362,6 @@ Window{
 
                 }
 
-
             ListView {
                 id: listView
                 x: 8
@@ -379,17 +374,6 @@ Window{
 
             }
 
-        }
-
-        Text {
-            id: text2
-            x: 324
-            y: 232
-            width: 97
-            height: 34
-            color: "#ffffff"
-            text: qsTr("Threats")
-            font.pixelSize: 27
         }
 
         Image {
@@ -496,7 +480,6 @@ Window{
                 }
                 onClicked: {
                     maincontroller.singleFileScan()
-                    //ListElement.append({infectedFile: infectFile})
                 }
             }
             fillMode: Image.PreserveAspectFit
@@ -523,6 +506,9 @@ Window{
                 onExited: {
                     scan_directory_button.width = 133
                     scan_directory_button.height = 38
+                }
+                onClicked: {
+                    maincontroller.scanDirectory()
                 }
             }
             fillMode: Image.PreserveAspectFit
@@ -554,14 +540,50 @@ Window{
             fillMode: Image.PreserveAspectFit
         }
 
+        ProgressBar {
+            background: Rectangle {
+                    implicitWidth: 580
+                    implicitHeight: 9
+                    color: "#ffffff"
+                    radius: 0
+                }
 
+            id: progressBar
+            x: 83
+            y: 680
+            width: 580
+            height: 9
+            visible: maincontroller.progressBarVisibility
+            indeterminate: false
+            to: maincontroller.totalBytesValueQml
+            from: 0
+            value: maincontroller.currentValueQml
 
+            contentItem: Item {
+                    implicitWidth: 580
+                    implicitHeight: 9
 
+                    Rectangle {
+                        width: progressBar.visualPosition * parent.width
+                        height: parent.height
+                        radius: 0
+                        color: "#0fa4e9"
+                    }
+              }
+        }
 
+        Text {
+            id: progressBarText
+            x: 83
+            y: 659
+            width: 85
+            height: 15
+            //visible: maincontroller.progressBarActivity
+            color: "#ffffff"
+            text: maincontroller.progressBarActivity
+            font.pixelSize: 12
+        }
     }
-
-
-
 }
 
 /*##^##

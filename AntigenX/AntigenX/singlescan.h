@@ -5,7 +5,9 @@
 #include <QObject>
 #include <QFileDialog>
 //#include <QStringListIterator>
+#include <QCryptographicHash>
 #include <QListIterator>
+#include <QTextStream>
 
 class SingleScan: public QThread
 
@@ -14,7 +16,7 @@ class SingleScan: public QThread
     //Q_PROPERTY(QString fileToDisplay READ NOTIFY infectedFiles)
 
 public:
-    SingleScan(QStringList, QString, QString, QStringList, QThread *parent = 0);
+    SingleScan(QThread *parent = 0);
     void run();
     bool stopSingleThread;
 
@@ -24,17 +26,21 @@ signals:
     void infectedFiles(QString);
 
 public slots:
-
+    void getRequiredFiles();
 
 private:
     QStringList virusList;
-    QString passFileToScan;
-    QStringList alist;
-    QString location;
-    QStringList hashValues;
+    //QString passFileToScan;
+    //QStringList alist;
+    //QString location;
+    //QStringList hashValues;
     int hashType;
     //QStringList currentList;
     //QString theInfectedFile;
+    QByteArray hashDataMd5;
+    QStringList hashList;
+    QString fileName;
+    QString filePath;
 
 };
 #endif // SINGLESCAN_H
