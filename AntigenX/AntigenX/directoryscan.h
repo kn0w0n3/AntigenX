@@ -7,10 +7,10 @@
 #include <QFileDialog>
 #include <QTextStream>
 #include <QListIterator>
+#include <QCryptographicHash>
+#include <QDebug>
 
-class DirectoryScan : public QThread
-
-{
+class DirectoryScan : public QThread{
     Q_OBJECT
 
 public:
@@ -30,5 +30,14 @@ private:
     QStringList directories;
     QStringList virusList;
     QStringList list;
+    QByteArray hashDataMd5;
+    QStringList hashList;
+    QStringList pathForHashList;
+    QStringList filenameOfHash;
+    int lineNumberOfVirusFile;
+    int numberOfHashesTested;
+    int lineNumberOfFilePaths;
+    bool exitVirusListLoop;
+
 };
 #endif // DIRECTORYSCAN_H

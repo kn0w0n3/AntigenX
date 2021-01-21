@@ -15,8 +15,7 @@
 #include "directoryscan.h"
 
 
-class MainController:  public QWidget
-{
+class MainController:  public QWidget{
     Q_OBJECT
     Q_PROPERTY(QString infectFile READ getFiles WRITE setFiles NOTIFY sendResultToQml)
 

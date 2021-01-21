@@ -9,9 +9,7 @@
 #include <QListIterator>
 #include <QTextStream>
 
-class SingleScan: public QThread
-
-{
+class SingleScan: public QThread{
     Q_OBJECT
     //Q_PROPERTY(QString fileToDisplay READ NOTIFY infectedFiles)
 

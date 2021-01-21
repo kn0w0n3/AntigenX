@@ -14,5 +14,7 @@
         <file>images/abort_scan_button.png</file>
         <file>images/antibody.png</file>
         <file>images/mx-bg-new.png</file>
+        <file>images/updates_icon.png</file>
+        <file>images/themes_icon.png</file>
     </qresource>
 </RCC>

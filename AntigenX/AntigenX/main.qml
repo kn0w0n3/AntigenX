@@ -9,6 +9,16 @@ Window{
     height: 720
     visible: true
     color: "#000000"
+    property alias updates: updates
+    property alias main_logo1: main_logo1
+    property alias main_backtground: main_backtground
+    property alias text2: text2
+    property alias themes_mouse_area: themes_mouse_area
+    property alias themes_image: themes_image
+    property alias updates_mouse_area: updates_mouse_area
+    property alias updates_image: updates_image
+    property alias main_logo: main_logo
+    property alias tools: tools
     property alias progressBarText: progressBarText
     property alias progressBar: progressBar
     property alias last_update_value: last_update_value
@@ -93,21 +103,21 @@ Window{
 
         Text {
             id: current_report_text
-            x: 474
-            y: 141
-            width: 203
+            x: 481
+            y: 135
+            width: 219
             height: 33
             color: "#ffffff"
             text: qsTr("Current Report")
-            font.pixelSize: 27
+            font.pixelSize: 30
             font.bold: true
         }
 
         Text {
             id: status_value
-            x: 570
-            y: 184
-            width: 122
+            x: 584
+            y: 187
+            width: 123
             height: 29
             color: "#64f336"
             text: qsTr("Protected")
@@ -116,8 +126,8 @@ Window{
 
         Text {
             id: status_text
-            x: 480
-            y: 180
+            x: 494
+            y: 183
             width: 76
             height: 33
             color: "#ffffff"
@@ -127,8 +137,8 @@ Window{
 
         Text {
             id: last_scan_text
-            x: 450
-            y: 219
+            x: 464
+            y: 215
             width: 105
             height: 33
             color: "#ffffff"
@@ -138,8 +148,8 @@ Window{
 
         Text {
             id: last_scan_value
-            x: 570
-            y: 219
+            x: 584
+            y: 215
             width: 122
             height: 33
             color: "#ffffff"
@@ -149,8 +159,8 @@ Window{
 
         Text {
             id: threats_found_text
-            x: 396
-            y: 258
+            x: 411
+            y: 289
             width: 159
             height: 33
             color: "#ffffff"
@@ -160,8 +170,8 @@ Window{
 
         Text {
             id: threats_found_value
-            x: 570
-            y: 258
+            x: 585
+            y: 289
             width: 122
             height: 28
             color: "#ffffff"
@@ -171,10 +181,10 @@ Window{
 
         Text {
             id: current_threats_text
-            x: 380
-            y: 297
+            x: 395
+            y: 322
             width: 175
-            height: 33
+            height: 32
             color: "#ffffff"
             text: qsTr("Current Threats:")
             font.pixelSize: 23
@@ -182,10 +192,10 @@ Window{
 
         Text {
             id: current_threats_value
-            x: 570
-            y: 292
+            x: 584
+            y: 323
             width: 122
-            height: 33
+            height: 31
             color: "#ffffff"
             text: qsTr("0")
             font.pixelSize: 23
@@ -193,8 +203,8 @@ Window{
 
         Text {
             id: last_update_text
-            x: 420
-            y: 336
+            x: 435
+            y: 250
             width: 135
             height: 33
             color: "#ffffff"
@@ -204,10 +214,10 @@ Window{
 
         Text {
             id: last_update_value
-            x: 570
-            y: 331
+            x: 585
+            y: 251
             width: 122
-            height: 33
+            height: 27
             color: "#ffffff"
             text: qsTr("01/01/2021")
             font.pixelSize: 23
@@ -251,6 +261,12 @@ Window{
                     if(!scan.visible == false){
                         scan.visible = false
                     }
+                    if(!tools.visible == false){
+                        tools.visible = false
+                    }
+                    if(!updates.visible == false){
+                        updates.visible = false
+                    }
                     home.visible = true
                 }
             }
@@ -284,9 +300,14 @@ Window{
                     if(!home.visible == false){
                         home.visible = false
                     }
+                    if(!tools.visible == false){
+                        tools.visible = false
+                    }
+                    if(!updates.visible == false){
+                        updates.visible = false
+                    }
                     scan.visible = true
                     //maincontroller.test2("Hello world")
-
                 }
             }
         }
@@ -314,6 +335,20 @@ Window{
                 onExited: {
                     image3.width = 65
                     image3.height = 75
+                }
+                onClicked: {
+                    if(!home.visible == false){
+                        home.visible = false
+                    }
+                    if(!scan.visible == false){
+                        scan.visible = false
+                    }
+                    if(!updates.visible == false){
+                        updates.visible = false
+                    }
+                    tools.visible = true
+                    //maincontroller.test2("Hello world")
+
                 }
             }
         }
@@ -349,18 +384,18 @@ Window{
             border.color: "#ffffff"
 
             ObjectModel {
-                    id: itemModel
-                    //Rectangle { height: 30; width: 80; color: "red"; text:maincontroller.infectFile}
-                    //Rectangle { height: 30; width: 80; color: "green" }
-                    //Rectangle { height: 30; width: 80; color: "blue" }
-                    Text {
-                        text: maincontroller.infectFile
-                        font.family: "Helvetica"
-                        font.pointSize: 12
-                        color: "white"
-                    }
-
+                id: itemModel
+                //Rectangle { height: 30; width: 80; color: "red"; text:maincontroller.infectFile}
+                //Rectangle { height: 30; width: 80; color: "green" }
+                //Rectangle { height: 30; width: 80; color: "blue" }
+                Text {
+                    text: maincontroller.infectFile
+                    font.family: "Helvetica"
+                    font.pointSize: 12
+                    color: "white"
                 }
+
+            }
 
             ListView {
                 id: listView
@@ -540,17 +575,125 @@ Window{
             fillMode: Image.PreserveAspectFit
         }
 
+        Text {
+            id: text2
+            x: 324
+            y: 239
+            width: 97
+            height: 32
+            color: "#ffffff"
+            text: qsTr("Threats")
+            font.pixelSize: 27
+        }
+    }
+
+    Rectangle {
+        id: tools
+        x: 100
+        y: 0
+        width: 1180
+        height: 720
+        visible: false
+        color: "#00000000"
+
+        Image {
+            id: main_logo
+            x: 403
+            y: 17
+            width: 375
+            height: 64
+            source: "images/AntigenX_Logo.png"
+            fillMode: Image.PreserveAspectFit
+        }
+
+        Image {
+            id: updates_image
+            x: 419
+            y: 291
+            width: 125
+            height: 125
+            source: "images/updates_icon.png"
+            fillMode: Image.PreserveAspectFit
+
+            MouseArea {
+                id: updates_mouse_area
+                x: 0
+                y: 0
+                width: 125
+                height: 125
+                hoverEnabled: true
+                onEntered: {
+                    updates_image.height = 128
+                    updates_image.width= 128
+                }
+                onExited: {
+                    updates_image.height = 125
+                    updates_image.width= 125
+                }
+                onClicked: {
+                    if(!tools.visible == false){
+                        tools.visible = false
+                    }
+                    updates.visible = true
+                }
+            }
+        }
+
+        Image {
+            id: themes_image
+            x: 607
+            y: 291
+            width: 125
+            height: 125
+            source: "images/themes_icon.png"
+            fillMode: Image.PreserveAspectFit
+
+            MouseArea {
+                id: themes_mouse_area
+                width: 125
+                height: 125
+                hoverEnabled: true
+                onEntered: {
+                    themes_image.height = 128
+                    themes_image.width= 128
+                }
+                onExited: {
+                    themes_image.height = 125
+                    themes_image.width= 125
+                }
+            }
+        }
+    }
+
+    Rectangle {
+        id: updates
+        x: 104
+        y: 2
+        width: 1180
+        height: 720
+        visible: false
+        color: "#00000000"
+        Image {
+            id: main_logo1
+            x: 403
+            y: 17
+            width: 375
+            height: 64
+            source: "images/AntigenX_Logo.png"
+            fillMode: Image.PreserveAspectFit
+        }
+
         ProgressBar {
             background: Rectangle {
-                    implicitWidth: 580
-                    implicitHeight: 9
-                    color: "#ffffff"
-                    radius: 0
-                }
+                implicitWidth: 580
+                implicitHeight: 9
+                color: "#ffffff"
+                radius: 0
+            }
 
             id: progressBar
-            x: 83
-            y: 680
+            x: 301
+            y: 670
             width: 580
             height: 9
             visible: maincontroller.progressBarVisibility
@@ -560,23 +703,44 @@ Window{
             value: maincontroller.currentValueQml
 
             contentItem: Item {
-                    implicitWidth: 580
-                    implicitHeight: 9
+                implicitWidth: 580
+                implicitHeight: 9
 
-                    Rectangle {
-                        width: progressBar.visualPosition * parent.width
-                        height: parent.height
-                        radius: 0
-                        color: "#0fa4e9"
-                    }
-              }
+                Rectangle {
+                    width: progressBar.visualPosition * parent.width
+                    height: parent.height
+                    radius: 0
+                    color: "#0fa4e9"
+                }
+            }
+        }
+
+        Switch {
+            id: switch1
+            x: 69
+            y: 174
+            width: 120
+            height: 42
+            text: "off"
+        }
+
+        Text {
+            id: text1
+            x: 69
+            y: 134
+            width: 228
+            height: 27
+            color: "#ffffff"
+            text: qsTr("Auto update definitions")
+            font.pixelSize: 20
+            font.bold: true
         }
 
         Text {
             id: progressBarText
-            x: 83
-            y: 659
-            width: 85
+            x: 301
+            y: 649
+            width: 209
             height: 15
             //visible: maincontroller.progressBarActivity
             color: "#ffffff"
@@ -588,6 +752,6 @@ Window{
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.75}D{i:2;invisible:true}
+    D{i:0;formeditorZoom:0.75}D{i:2;invisible:true}D{i:42}D{i:48}
 }
 ##^##*/

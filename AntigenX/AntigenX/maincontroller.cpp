@@ -17,7 +17,7 @@ void MainController::singleFileScan(){
 
 void MainController::scanDirectory(){
     directoryScan = new DirectoryScan();
-    connect(directoryScan, &DirectoryScan::scanStartx, this, &MainController::handleScanStart);
+    //connect(directoryScan, &DirectoryScan::scanStartx, this, &MainController::handleScanStart);
     connect(directoryScan, &DirectoryScan::scanCompletex, this, &MainController::handleScanComplete);
     connect(directoryScan, &DirectoryScan::infectedFilesx, this, &MainController::displayInfectedFiles);
     connect(directoryScan, &DirectoryScan::finished, directoryScan, &QObject::deleteLater);
@@ -34,7 +34,7 @@ void MainController::handleScanStart(){
 void MainController::handleScanComplete(){
     //if the ui list is empty, add no threats found to the screen
     qDebug() << "At handle scan complete";
-    qDebug() << fileCount;
+    //qDebug() << fileCount;
     if(fileCount > 0){
         //send message to qml
         fileCount = 0;
@@ -51,12 +51,11 @@ void MainController::test(){
 
 //Receive data from the thread and send it the the qml GUI
 void MainController::displayInfectedFiles(QString files){
-     theInfectedFile = files;
+    qDebug() << "In display infected files";
      fileCount++;
-     qDebug() << "In display infected files";
      qDebug() << fileCount;
-     //Now send the data to the qml screen
-
+     theInfectedFile = files;
+     //Send the data to the GUI
      emit sendResultToQml(theInfectedFile);
 }
 

@@ -12,8 +12,7 @@
 #include <QTextStream>
 #include <QDataStream>
 
-class UpdateController : public QObject
-{
+class UpdateController : public QObject{
     Q_OBJECT
 
 public:
