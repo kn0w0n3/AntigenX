@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/abort_scan_button.png</file>
+        <file>images/antibody.png</file>
+        <file>images/AntigenX_Logo.png</file>
+        <file>images/button_blank.png</file>
+        <file>images/home_btn.png</file>
+        <file>images/mx-bg-new.png</file>
+        <file>images/remove_all_button.png</file>
+        <file>images/remove_selected_button.png</file>
+        <file>images/scan_btn.png</file>
+        <file>images/scan_button.png</file>
+        <file>images/scan_dir_button.png</file>
+        <file>images/smart_scan_button.png</file>
+        <file>images/themes_icon.png</file>
+        <file>images/tools_btn.png</file>
+        <file>images/updates_icon.png</file>
+        <file>images/checkUpdatesBtn.png</file>
+    </qresource>
+</RCC>
