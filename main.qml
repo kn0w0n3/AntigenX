@@ -241,7 +241,7 @@ Window {
         width: 1280
         height: 720
         color: "#00ffffff"
-        visible: false
+        visible: true
 
         Rectangle {
             id: updatesDisplayWin
@@ -816,7 +816,7 @@ Window {
         height: 720
         color: "#00ffffff"
         //color: "#00ffffff"
-        visible: true
+        visible: false
 
         Rectangle {
             id: rectangle
