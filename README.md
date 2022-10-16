@@ -2,7 +2,7 @@
      
 AntigenX is an antivirus program being developed specifically for Linux. This is an open source project that will provide an antivirus solution that is easy to use whether you are an average or advanced Linux user. AntigenX will include:  
 
-* Static Heuristic Anlaysis  
+* Static Heuristic Analysis  
 * Dynamic Heuristic Analysis     
 * Signature Detection 
 * Virus and Malware Detection 
@@ -62,6 +62,3 @@ Cuckoo Sandbox consists of a central management software which handles sample ex
 * Almost anything else  
   
 https://cuckoosandbox.org/  
-
-
-
