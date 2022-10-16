@@ -39,9 +39,11 @@ It can retrieve the following type of results:
 * Memory dumps of the malware processes.  
 * Network traffic trace in PCAP format.  
 * Screenshots taken during the execution of the malware.  
-* Full memory dumps of the machines.    
+* Full memory dumps of the machines.  
+
+![architecture-main](https://user-images.githubusercontent.com/22214754/196033933-012a7d9d-59c5-4209-852d-1d0e106db029.png)  
   
-https://cuckoosandbox.org/
+https://cuckoosandbox.org/  
 
 
 
