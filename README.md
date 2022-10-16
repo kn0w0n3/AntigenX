@@ -8,20 +8,19 @@ AntigenX is an antivirus program being developed specifically for Linux. This is
 * Virus and Malware Detection 
 * GUI Interface   
  
-![AntigenX-Linux-GUI-F2-10-16-22](https://user-images.githubusercontent.com/22214754/196059096-05d0cd25-aeb2-447e-8307-dc7b39cfca21.gif)      
+![AntigenX-Linux-GUI-F2-10-16-22](https://user-images.githubusercontent.com/22214754/196059096-05d0cd25-aeb2-447e-8307-dc7b39cfca21.gif)        
   
-![Linux-GUI-10-16-22](https://user-images.githubusercontent.com/22214754/196058044-dedb6af0-7cef-48f6-ab94-0b0aba6378fe.gif)  
-
+![Linux-GUI-10-16-22](https://user-images.githubusercontent.com/22214754/196058044-dedb6af0-7cef-48f6-ab94-0b0aba6378fe.gif)    
 
 # Developed with:  
 
-**Operating System:**
-![github-linux-logo](https://user-images.githubusercontent.com/22214754/196059802-cc7ea176-977d-4cc3-b56a-e29c60d07dc3.png)
+![github-linux-logo](https://user-images.githubusercontent.com/22214754/196059802-cc7ea176-977d-4cc3-b56a-e29c60d07dc3.png)  
 
+**Operating System:**  
+![ubuntu-logo](https://user-images.githubusercontent.com/22214754/196060164-ef9496b7-a159-4169-8d08-1db3097bf95d.png)    
 
+**IDE:**   
 ![QtLogo](https://user-images.githubusercontent.com/22214754/179895211-d52559ab-35df-4fcc-bf69-7377739330d4.png)  
-
-**IDE:**  
 Qt Creator 4.12.3  
 Based on Qt 5.14.2 (MSVC 2017, 32 bit)  
 Built on Jun 16 2020 01:19:17  
