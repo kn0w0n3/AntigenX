@@ -21,8 +21,20 @@ Qt framework 5.15.0
 # Currently Testing:    
 
 ![cuckoo-white](https://user-images.githubusercontent.com/22214754/196032540-ca66db74-1968-4d38-84c0-287cb86b1174.png)  
-  
 
+Cuckoo is an open source automated malware analysis system.  
+
+It’s used to automatically run and analyze files and collect comprehensive analysis results that outline what the malware does while running inside an isolated operating system.  
+
+It can retrieve the following type of results:  
+
+*Traces of calls performed by all processes spawned by the malware.  
+*Files being created, deleted and downloaded by the malware during its execution.  
+*Memory dumps of the malware processes.  
+*Network traffic trace in PCAP format.  
+*Screenshots taken during the execution of the malware.  
+*Full memory dumps of the machines.    
+  
 https://cuckoosandbox.org/
 
 
