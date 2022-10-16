@@ -16,7 +16,13 @@ AntigenX is an antivirus program being developed specifically for Linux. This is
 
 ![github-linux-logo](https://user-images.githubusercontent.com/22214754/196059802-cc7ea176-977d-4cc3-b56a-e29c60d07dc3.png)  
 
-**Operating System:**  
+**Operating System:** 
+
+Distributor ID:	Ubuntu    
+Description: Ubuntu 20.04.5 LTS    
+Release: 20.04    
+Codename: focal  
+
 ![ubuntu-logo](https://user-images.githubusercontent.com/22214754/196060164-ef9496b7-a159-4169-8d08-1db3097bf95d.png)    
 
 **IDE:**   
