@@ -20,7 +20,8 @@ Qt framework 5.15.0
 
 # Currently Testing:    
 
-![cuckoo_logo-1](https://user-images.githubusercontent.com/22214754/196032442-5c7fe11c-6f30-4090-84e4-23179f5cf3bf.png)  
+![cuckoo-white](https://user-images.githubusercontent.com/22214754/196032540-ca66db74-1968-4d38-84c0-287cb86b1174.png)  
+  
 
 https://cuckoosandbox.org/
 
