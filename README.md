@@ -41,7 +41,26 @@ It can retrieve the following type of results:
 * Screenshots taken during the execution of the malware.  
 * Full memory dumps of the machines.  
 
+**Architecture:**  
+Cuckoo Sandbox consists of a central management software which handles sample execution and analysis.   
+
 ![architecture-main](https://user-images.githubusercontent.com/22214754/196033933-012a7d9d-59c5-4209-852d-1d0e106db029.png)  
+
+**Use Cases:**
+Analysis of:  
+
+* Generic Windows executables
+* DLL files
+* PDF documents
+* Microsoft Office documents
+* URLs and HTML files
+* PHP scripts
+* CPL files
+* Visual Basic (VB) scripts
+* ZIP files
+* Java JAR
+* Python files
+* Almost anything else  
   
 https://cuckoosandbox.org/  
 
