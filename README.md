@@ -16,7 +16,7 @@ AntigenX is an antivirus program being developed specifically for Linux. This is
 
 ![github-linux-logo](https://user-images.githubusercontent.com/22214754/196059802-cc7ea176-977d-4cc3-b56a-e29c60d07dc3.png)    
 
-**Operating System:**  
+# **Operating System:**  
 
 ![ubuntu-logo-with-os-info-w](https://user-images.githubusercontent.com/22214754/196061321-49423c7f-05d6-4d93-a185-18216ab5793e.png)        
 
@@ -25,7 +25,7 @@ Description: Ubuntu 20.04.5 LTS
 Release: 20.04    
 Codename: focal  
 
-**IDE:**   
+# **IDE:**   
 ![QtLogo](https://user-images.githubusercontent.com/22214754/179895211-d52559ab-35df-4fcc-bf69-7377739330d4.png)  
 Qt Creator 4.12.3  
 Based on Qt 5.14.2 (MSVC 2017, 32 bit)  
