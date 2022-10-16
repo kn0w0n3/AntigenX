@@ -28,12 +28,12 @@ It’s used to automatically run and analyze files and collect comprehensive ana
 
 It can retrieve the following type of results:  
 
-*Traces of calls performed by all processes spawned by the malware.  
-*Files being created, deleted and downloaded by the malware during its execution.  
-*Memory dumps of the malware processes.  
-*Network traffic trace in PCAP format.  
-*Screenshots taken during the execution of the malware.  
-*Full memory dumps of the machines.    
+* Traces of calls performed by all processes spawned by the malware.  
+* Files being created, deleted and downloaded by the malware during its execution.  
+* Memory dumps of the malware processes.  
+* Network traffic trace in PCAP format.  
+* Screenshots taken during the execution of the malware.  
+* Full memory dumps of the machines.    
   
 https://cuckoosandbox.org/
 
