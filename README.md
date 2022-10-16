@@ -46,8 +46,7 @@ Cuckoo Sandbox consists of a central management software which handles sample ex
 
 ![architecture-main](https://user-images.githubusercontent.com/22214754/196033933-012a7d9d-59c5-4209-852d-1d0e106db029.png)  
 
-**Use Cases:**
-Analysis of:  
+**Use Cases:**   
 
 * Generic Windows executables
 * DLL files
