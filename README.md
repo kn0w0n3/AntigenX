@@ -14,7 +14,7 @@ AntigenX is an antivirus program being developed specifically for Linux. This is
 
 # Developed with:  
 
-![github-linux-logo](https://user-images.githubusercontent.com/22214754/196059802-cc7ea176-977d-4cc3-b56a-e29c60d07dc3.png)    
+![github-linux-logo-kernel-corn](https://user-images.githubusercontent.com/22214754/196063512-495e0624-c344-4b32-9507-0f4fbc85a633.png)      
 
 # **Operating System:**  
 
