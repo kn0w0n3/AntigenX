@@ -241,7 +241,7 @@ Window {
         width: 1280
         height: 720
         color: "#00ffffff"
-        visible: true
+        visible: false
 
         Rectangle {
             id: updatesDisplayWin
@@ -357,17 +357,11 @@ Window {
             to: 415.255187
             enabled: true
             value: 0.00
-            //visualPosition:  cPf
-            Component.onCompleted:{
-                //updateController.downloadSignatures()
-
-            }
             onValueChanged: {
                 if(updateProgressBar.value == updateProgressBar.to){
                     progressText.visible = false
                     downloadingText.visible = false
                     updateProgressBar.visible = false
-
                 }
             }
 
@@ -377,7 +371,6 @@ Window {
                     color: "#000000"
                     radius: 9
                 }
-
 
             contentItem: Item {
                            implicitWidth: 545
@@ -390,21 +383,14 @@ Window {
                                color: "#0fa4e9"
                            }
                        }
-            //Note: The first letter of signal name must be captialized . Very small detail.
-            //Think you will just capitalize it in the header file? Try it.
+
+            //Note: The first letter of signal name must be captialized even though it's not in the original signal name. Very small detail.
+            //Think you will just capitalize it in the header file? Try it and see what happens lol.
             Connections{
                 target: mainController
                     onBytesReadToQml:{
                         updateProgressBar.value = bRTQML / 1000000
                         progressText.text = bRTQML/ 1000000
-                        //property date currentDate: new Date()
-                        //property string dateString
-
-                        //incomingDataSizeText.text = bRTQML
-                        //updateProgressBar.to = bRTQML
-
-                        //progressText.text += cPF
-                        //progressText.text = dSize
                     }
                     onTotalBytesToQml:{
                         //Currently getting -1 on the total bytes signal
@@ -412,7 +398,6 @@ Window {
                         //updateProgressBar.to = tBTQML
                 }
             }
-
         }
 
         Text {
@@ -499,7 +484,6 @@ Window {
                     downloadingText.visible = true
                     //currentDateText4.text = currentDate.toLocaleDateString(locale, Locale.ShortFormat);
                     mainController.downloadSignatures()
-
                 }
             }
             source: "images/checkUpdatesBtn.png"
@@ -587,7 +571,6 @@ Window {
         color: "#00ffffff"
         visible: false
 
-
         Rectangle {
             id: displayWindow
             x: 397
@@ -596,6 +579,56 @@ Window {
             height: 260
             color: "#000000"
             border.color: "#ffffff"
+
+            ListView {
+                id: listView
+                x: 4
+                y: 3
+                width: 545
+                height: 260
+                model: ListModel {
+                    id:virusAlertModel
+                    ListElement {
+                        someText: "Select an action to perform"
+                    }
+                }
+
+                //Populating the list model dynaically is having some issues.
+                //Janky workaround is to just remove the duplicate first entry.
+                delegate: Rectangle{
+
+                    id: iVirusLabel
+                    width: 540
+                    height: 20
+                    border.color: "#000000"
+                    color: "#000000"
+                    radius: 6
+
+                    Text {
+                        id:iVirusText
+                        text: someText
+                        font.bold: false
+                        color: "#ffffff"
+                        anchors.verticalCenter: parent.verticalCenter
+                        Connections {
+                            target: mainController
+                            onSendResultToQml: {
+                                iVirusText.text = singleScanResult
+                                virusAlertModel.append({"someText": singleScanResult})
+                            }
+                            onScanStarted: {
+                                scanStatusText.text = "Scan In Progress..."
+                                scanStatusText.color = "#0000FF"
+                            }
+                            onScanComplete: {
+                                virusAlertModel.remove(0)
+                                scanStatusText.color = "#45f248"
+                                scanStatusText.text = "Scan Complete"
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         Image {
@@ -701,7 +734,7 @@ Window {
                     single_scan_button.height = 38
                 }
                 onClicked: {
-                    maincontroller.singleFileScan()
+                    mainController.singleFileScan()
                 }
             }
             fillMode: Image.PreserveAspectFit
@@ -730,7 +763,7 @@ Window {
                     scan_directory_button.height = 38
                 }
                 onClicked: {
-                    maincontroller.scanDirectory()
+                    mainController.scanDirectory()
                 }
             }
             fillMode: Image.PreserveAspectFit
@@ -807,6 +840,18 @@ Window {
             text: qsTr("7/29/2022")
             font.pixelSize: 16
         }
+
+        Text {
+            id: scanStatusText
+            x: 397
+            y: 187
+            width: 98
+            height: 15
+            color: "#ffffff"
+            text: qsTr("")
+            font.pixelSize: 12
+
+        }
     }
     Rectangle {
         id: mainWin
@@ -816,7 +861,7 @@ Window {
         height: 720
         color: "#00ffffff"
         //color: "#00ffffff"
-        visible: false
+        visible: true
 
         Rectangle {
             id: rectangle
@@ -948,7 +993,6 @@ Window {
                 font.pixelSize: 20
             }
 
-
             Text {
                 id: element5
                 x: 202
@@ -996,15 +1040,7 @@ Window {
         }
     }
 
-
 }//Main Window end
-
-
-
-
-
-
-
 /*##^##
 Designer {
     D{i:0;formeditorZoom:0.75}

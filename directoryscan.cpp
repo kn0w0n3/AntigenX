@@ -4,6 +4,7 @@ DirectoryScan::DirectoryScan(QThread *parent) : QThread(parent){
    lineNumberOfVirusFile = 0;
    numberOfHashesTested = 0;
    lineNumberOfFilePaths = 0;
+   numFilesScanned = 0;
    getRequiredFiles();
 }
 
@@ -12,14 +13,14 @@ void DirectoryScan::run(){
     emit scanStartx();
     foreach (const QString &hash, hashList){
         numberOfHashesTested++;
-        qDebug() << numberOfHashesTested;
+        //qDebug() << numberOfHashesTested;
         foreach (const QString &str, virusList){
             lineNumberOfVirusFile++;
-            qDebug() << lineNumberOfVirusFile;
+            //qDebug() << lineNumberOfVirusFile;
             if(hash == str){
                 foreach(const QString &p, pathForHashList){
                     lineNumberOfFilePaths++;
-                    qDebug() << lineNumberOfFilePaths;
+                    //qDebug() << lineNumberOfFilePaths;
                     if(lineNumberOfFilePaths == lineNumberOfVirusFile){
                         emit infectedFilesx(p);
                         lineNumberOfFilePaths = 0;
@@ -32,11 +33,10 @@ void DirectoryScan::run(){
                 lineNumberOfVirusFile = 0;
                 exitVirusListLoop = false;
                 break;
-
             }
         }
     }
-    qDebug() << "emitting scan complete here";
+    //qDebug() << "emitting scan complete here";
     emit scanCompletex();
 }
 
@@ -55,27 +55,32 @@ void DirectoryScan::getRequiredFiles(){
     foreach (QString element, list){
         QDirIterator directory(element, QDirIterator::Subdirectories);
         while (directory.hasNext()){
-            QString path = directory.filePath();
-            //qDebug() << path;
-            pathForHashList << path;
-            QFileInfo fi(element);
-            QString fn = fi.fileName();
-            filenameOfHash << fn;
-            QFile inputFileFromDirs(path);
-            if (inputFileFromDirs.open(QIODevice::ReadOnly)){
-                QByteArray fileData = inputFileFromDirs.readAll();
-                hashDataMd5 = QCryptographicHash::hash(fileData, QCryptographicHash::Md5).toHex();
-                qDebug() << hashDataMd5;
-                hashList << hashDataMd5;
+            if(directory.filePath().isEmpty()){;
+                directory.next();
+            }else{
+                QString path = directory.filePath();
+                numFilesScanned++;
+                qDebug() << "File num: " << numFilesScanned << "| The path is: " << path;
+                pathForHashList << path;
+                QFileInfo fi(element);
+                QString fn = fi.fileName();
+                filenameOfHash << fn;
+                QFile inputFileFromDirs(path);
+                if (inputFileFromDirs.open(QIODevice::ReadOnly)){
+                    QByteArray fileData = inputFileFromDirs.readAll();
+                    hashDataMd5 = QCryptographicHash::hash(fileData, QCryptographicHash::Md5).toHex();
+                    qDebug() << hashDataMd5;
+                    hashList << hashDataMd5;
+                }
             }
             directory.next();
         }
     }
-    QFile inputFile("/home/voldem0rt/Desktop/AntigenX/AntigenX/viruslist.txt");
+    QFile inputFile("/home/voldem0rt/Desktop/AntigenX-main/viruslist.txt");
     if (inputFile.open(QIODevice::ReadOnly)){
         QTextStream in(&inputFile);
         while (!in.atEnd()){
-           QString line = in.readLine();
+            QString line = in.readLine();
             virusList << line;
         }
         inputFile.close();

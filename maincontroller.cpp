@@ -1,20 +1,20 @@
 #include "maincontroller.h"
 
 MainController::MainController(QWidget *parent) :QWidget(parent){
-//QFileDialog dialog(this);
     fileCount = 0;
     //downloadSignatures();
 }
 
 void MainController::singleFileScan(){
     singleFileScanThread = new SingleScan();
-    //connect(singleFileScanThread, &SingleScan::scanStart, this, &MainController::handleScanStart);
+    connect(singleFileScanThread, &SingleScan::scanStart, this, &MainController::handleScanStart);
     connect(singleFileScanThread, &SingleScan::scanComplete, this, &MainController::handleScanComplete);
     connect(singleFileScanThread, &SingleScan::infectedFiles, this, &MainController::displayInfectedFiles);
     connect(singleFileScanThread, &SingleScan::finished, singleFileScanThread, &QObject::deleteLater);
     singleFileScanThread->start();
 }
 
+//TODO Set up the scan start message for directory scan to notify qml.
 void MainController::scanDirectory(){
     directoryScan = new DirectoryScan();
     //connect(directoryScan, &DirectoryScan::scanStartx, this, &MainController::handleScanStart);
@@ -27,31 +27,29 @@ void MainController::scanDirectory(){
 
 //Set message on screen based on operation
 void MainController::handleScanStart(){
-    qDebug() << "Back in main controll hndle scan start";
+    //qDebug() << "Back in main control hndle scan start";
+    emit scanStarted();
 }
 
 //Display info on screen based on scan completion
 void MainController::handleScanComplete(){
-    //if the ui list is empty, add no threats found to the screen
-    qDebug() << "At handle scan complete";
-    //qDebug() << fileCount;
     if(fileCount > 0){
         //send message to qml
         fileCount = 0;
     }else{
         theInfectedFile = "No Threats Found!";
         emit sendResultToQml(theInfectedFile);
-        qDebug() << "SHOUL D SEND MESSAGE NOW";
+        emit scanComplete();
     }
 }
 
 void MainController::test(){
-    qDebug() << "works now";
+    //qDebug() << "works now";
 }
 
 //Receive data from the thread and send it the the qml GUI
 void MainController::displayInfectedFiles(QString files){
-    qDebug() << "In display infected files";
+     //qDebug() << "In display infected files";
      fileCount++;
      qDebug() << fileCount;
      theInfectedFile = files;
@@ -69,13 +67,11 @@ QString MainController::getFiles(){
 
 int MainController::getCurrentValue(){
     return currentValue;
-
-    //qDebug()<< currentValue;
 }
 
 QString MainController::getTxtCurrentValue(){
      txtBytestoQML = QString::number(currentValue);
-     qDebug() << txtBytestoQML;
+     //qDebug() << txtBytestoQML;
      return txtBytestoQML;
 }
 
@@ -96,7 +92,7 @@ void MainController::setFiles(QString){
 }
 
 void MainController::downloadSignatures(){
-    //qDebug() <<"Attempting to download signatures!";
+    //qDebug() <<"Attempting to download signatures......";
     updateThread = new QThread();
     updateController = new UpdateController();
     connect(updateController, &UpdateController::currentProgress, this, &MainController::updateProgressBar);
@@ -109,29 +105,17 @@ void MainController::downloadSignatures(){
 
 //Send Progress Bar download values to QML GUI
 void MainController::updateProgressBar(int bytesRead, int totalBytes ){
-    //gValBarActivity = "Downloading...";
-    //gValBarVisibility = true;
     emit pBarActivity("Downloading...");
-    //emit pBarVisibility(true);
     totBytesVal = totalBytes;
-    qDebug() << totBytesVal;
+    //qDebug() << totBytesVal;
     currentValue = bytesRead;
-    qDebug() << currentValue;
+    //qDebug() << currentValue;
     emit totalBytesToQml(totalBytes);
     emit txtBytesReadToQml(txtBytestoQML);
-    emit bytesReadToQml(bytesRead);
-    //if(currentValue >= totBytesVal ) {
-        //currentValue = 0;
-        //emit bytesReadToQml(currentValue);
-        //gValBarActivity = "";
-        //emit pBarActivity("");
-        //gValBarVisibility = false;
-       // emit pBarVisibility(false);
-   // }
+    emit bytesReadToQml(bytesRead);    
 }
 
 void MainController::updateProgBarFileOps(int n){
-
 
 }
 

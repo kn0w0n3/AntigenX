@@ -1,6 +1,5 @@
 #ifndef DIRECTORYSCAN_H
 #define DIRECTORYSCAN_H
-
 #include <QThread>
 #include <QObject>
 #include <QDirIterator>
@@ -38,6 +37,6 @@ private:
     int numberOfHashesTested;
     int lineNumberOfFilePaths;
     bool exitVirusListLoop;
-
+    int numFilesScanned;
 };
 #endif // DIRECTORYSCAN_H
