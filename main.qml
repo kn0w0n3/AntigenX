@@ -86,7 +86,7 @@ Window {
                     homeWinBtn.width = 65
                     homeWinBtn.height = 75
                 }
-                onClicked: {                   
+                onClicked: {
                     if(!scanWin.visible == false){
                         scanWin.visible = false
                     }
@@ -253,7 +253,7 @@ Window {
             border.color: "#ffffff"
 
             Text {
-                id: element11
+                id: statusLable
                 x: 187
                 y: 14
                 width: 58
@@ -265,7 +265,7 @@ Window {
             }
 
             Text {
-                id: element12
+                id: lastUdateLable
                 x: 139
                 y: 43
                 width: 106
@@ -277,7 +277,7 @@ Window {
             }
 
             Text {
-                id: element13
+                id: updateWinStatusTxt
                 x: 260
                 y: 14
                 width: 91
@@ -289,7 +289,7 @@ Window {
             }
 
             Text {
-                id: element14
+                id: updateWinLUT
                 x: 260
                 y: 43
                 width: 106
@@ -301,7 +301,7 @@ Window {
             }
 
             Text {
-                id: element15
+                id: updateWinLCLable
                 x: 148
                 y: 72
                 width: 97
@@ -314,7 +314,7 @@ Window {
         }
 
         Image {
-            id: image9
+            id: logoSmallCorner
             x: 1223
             y: 664
             width: 47
@@ -336,12 +336,12 @@ Window {
 
         Text {
             id: currentDateText2
-            x: 1183
+            x: 1187
             y: 29
             width: 89
             height: 25
             color: "#ffffff"
-            text: qsTr("7/29/2022")
+            text: qsTr("7/29/22")
             font.pixelSize: 16
         }
 
@@ -366,36 +366,36 @@ Window {
             }
 
             background: Rectangle {
-                    //implicitWidth: 200
-                    //implicitHeight: 6
-                    color: "#000000"
-                    radius: 9
-                }
+                //implicitWidth: 200
+                //implicitHeight: 6
+                color: "#000000"
+                radius: 9
+            }
 
             contentItem: Item {
-                           implicitWidth: 545
-                           implicitHeight: 14
+                implicitWidth: 545
+                implicitHeight: 14
 
-                           Rectangle {
-                               width: updateProgressBar.visualPosition * parent.width
-                               height: parent.height
-                               radius: 9
-                               color: "#0fa4e9"
-                           }
-                       }
+                Rectangle {
+                    width: updateProgressBar.visualPosition * parent.width
+                    height: parent.height
+                    radius: 9
+                    color: "#0fa4e9"
+                }
+            }
 
             //Note: The first letter of signal name must be captialized even though it's not in the original signal name. Very small detail.
             //Think you will just capitalize it in the header file? Try it and see what happens lol.
             Connections{
                 target: mainController
-                    onBytesReadToQml:{
-                        updateProgressBar.value = bRTQML / 1000000
-                        progressText.text = bRTQML/ 1000000
-                    }
-                    onTotalBytesToQml:{
-                        //Currently getting -1 on the total bytes signal
-                        //incomingDataSizeText.text = tBTQML
-                        //updateProgressBar.to = tBTQML
+                onBytesReadToQml:{
+                    updateProgressBar.value = bRTQML / 1000000
+                    progressText.text = bRTQML/ 1000000
+                }
+                onTotalBytesToQml:{
+                    //Currently getting -1 on the total bytes signal
+                    //incomingDataSizeText.text = tBTQML
+                    //updateProgressBar.to = tBTQML
                 }
             }
         }
@@ -425,7 +425,7 @@ Window {
         }
 
         Text {
-            id: currentDateText4
+            id: updateWinLCT
             x: 658
             y: 281
             width: 89
@@ -444,8 +444,8 @@ Window {
             height: 29
             text: qsTr("Check for Updates")
             visible: false
-            property date currentDate: new Date()
-            property string dateString
+            //property date currentDate: new Date()
+            //property string dateString
             onClicked: {
                 //currentDateText4.text = currentDate.toLocaleDateString(locale, Locale.ShortFormat);
                 //mainController.downloadSignatures()
@@ -460,8 +460,7 @@ Window {
             height: 38
             visible: true
             fillMode: Image.PreserveAspectFit
-            property date currentDate: new Date()
-            property string dateString
+
             MouseArea {
                 id: mouse_area_chk_updts
                 x: 0
@@ -469,7 +468,9 @@ Window {
                 width: 133
                 height: 38
                 hoverEnabled: true
-
+                property var locale: Qt.locale()
+                property date currentDate: new Date()
+                property string dateString
                 onEntered: {
                     checkUpdatesBtn.width = 136
                     checkUpdatesBtn.height = 41
@@ -482,8 +483,9 @@ Window {
                     updateProgressBar.visible = true
                     progressText.visible = true
                     downloadingText.visible = true
-                    //currentDateText4.text = currentDate.toLocaleDateString(locale, Locale.ShortFormat);
                     mainController.downloadSignatures()
+                    updateWinLCT.text = currentDate.toLocaleDateString(locale, Locale.ShortFormat)
+                    //TODO: Implement sqlite db to store information
                 }
             }
             source: "images/checkUpdatesBtn.png"
@@ -511,17 +513,17 @@ Window {
 
         Image {
             id: image4
-            x: 563
-            y: 301
-            width: 154
-            height: 118
+            x: 606
+            y: 316
+            width: 95
+            height: 88
             source: "images/themes_icon.png"
             MouseArea {
                 id: mouseArea4
                 x: 0
                 y: 0
-                width: 66
-                height: 75
+                width: 95
+                height: 88
                 visible: true
                 hoverEnabled: true
             }
@@ -552,12 +554,12 @@ Window {
 
         Text {
             id: currentDateText3
-            x: 1183
+            x: 1187
             y: 29
             width: 89
             height: 25
             color: "#ffffff"
-            text: qsTr("7/29/2022")
+            text: qsTr("7/29/22")
             font.pixelSize: 16
         }
     }
@@ -589,7 +591,7 @@ Window {
                 model: ListModel {
                     id:virusAlertModel
                     ListElement {
-                        someText: "Select an action to perform"
+                        someText: ""
                     }
                 }
 
@@ -610,20 +612,33 @@ Window {
                         font.bold: false
                         color: "#ffffff"
                         anchors.verticalCenter: parent.verticalCenter
-                        Connections {
+                        Connections {                    
                             target: mainController
+                            property var locale: Qt.locale()
+                            property date currentDate: new Date()
+                            property string dateString
+
                             onSendResultToQml: {
                                 iVirusText.text = singleScanResult
                                 virusAlertModel.append({"someText": singleScanResult})
                             }
-                            onScanStarted: {
-                                scanStatusText.text = "Scan In Progress..."
-                                scanStatusText.color = "#0000FF"
+                            onScanStarted: {                               
+                                filesScannedLabel.visible = true
+                                numFilesScanned.visible = true
+                                scanStausTextS.visible = true
+                                scanStatusTextD.visible = false
+                                numFilesScanned.text = ""
+                                iVirusText.text = ""
                             }
                             onScanComplete: {
+                                scanStatusTextD.visible = true
+                                scanStausTextS.visible = false
                                 virusAlertModel.remove(0)
-                                scanStatusText.color = "#45f248"
-                                scanStatusText.text = "Scan Complete"
+                                scanStatusTextD.color = "#45f248"
+                                scanStatusTextD.text = "Scan Complete @ " + Qt.formatTime(new Date(),"hh:mm:ss") + " " + currentDate.toLocaleDateString(locale, Locale.ShortFormat)
+                            }
+                            onFileCountInfo: {
+                                numFilesScanned.text = numFilesScanned_
                             }
                         }
                     }
@@ -764,6 +779,8 @@ Window {
                 }
                 onClicked: {
                     mainController.scanDirectory()
+                    filesScannedLabel.visible = true
+                    numFilesScanned.visible = true
                 }
             }
             fillMode: Image.PreserveAspectFit
@@ -800,13 +817,14 @@ Window {
         Text {
             id: text2
             x: 621
-            y: 170
+            y: 168
             width: 97
-            height: 32
+            height: 34
             color: "#ffffff"
             text: qsTr("Threats")
             visible: true
             font.pixelSize: 27
+            font.underline: true
         }
 
         Image {
@@ -832,25 +850,66 @@ Window {
 
         Text {
             id: currentDateText1
-            x: 1183
+            x: 1187
             y: 29
             width: 89
             height: 25
             color: "#ffffff"
-            text: qsTr("7/29/2022")
+            text: qsTr("7/29/22")
             font.pixelSize: 16
         }
 
         Text {
-            id: scanStatusText
-            x: 397
-            y: 187
-            width: 98
+            id: scanStatusTextD
+            x: 696
+            y: 474
+            width: 248
             height: 15
             color: "#ffffff"
             text: qsTr("")
-            font.pixelSize: 12
+            font.pixelSize: 15
+            font.bold: false
 
+        }
+
+        Text {
+            id: filesScannedLabel
+            x: 397
+            y: 474
+            width: 80
+            height: 15
+            visible: false
+            color: "#ffffff"
+            text: qsTr("Files Scanned: ")
+            font.pixelSize: 14
+            font.bold: true
+        }
+
+        Text {
+            id: numFilesScanned
+            x: 495
+            y: 474
+            width: 149
+            height: 15
+            visible: false
+            color: "#ffffff"
+            text: qsTr("")
+            font.pixelSize: 14
+            font.bold: true
+        }
+
+        Text {
+            id: scanStausTextS
+            x: 397
+            y: 184
+            width: 104
+            height: 18
+            visible: false
+            color: "#0000ff"
+            text: qsTr("Scan in progress.......")
+            font.pixelSize: 16
+            font.bold: true
+            minimumPixelSize: 10
         }
     }
     Rectangle {
@@ -868,15 +927,15 @@ Window {
             x: 397
             y: 208
             width: 545
-            height: 260
+            height: 243
             color: "#000000"
             visible: true
             border.color: "#ffffff"
 
             Text {
-                id: element
-                x: 178
-                y: 47
+                id: statusLabel
+                x: 191
+                y: 21
                 width: 77
                 height: 28
                 color: "#ffffff"
@@ -886,21 +945,21 @@ Window {
             }
 
             Text {
-                id: element1
-                x: 147
-                y: 78
-                width: 107
+                id: lastSmartScanLabel
+                x: 101
+                y: 77
+                width: 160
                 height: 28
                 color: "#ffffff"
-                text: qsTr("Last Scan:")
+                text: qsTr("Last Smart Scan:")
                 font.pixelSize: 20
                 font.bold: true
             }
 
             Text {
-                id: element2
-                x: 123
-                y: 109
+                id: lastUpdateLabel
+                x: 139
+                y: 134
                 width: 133
                 height: 28
                 color: "#ffffff"
@@ -910,10 +969,10 @@ Window {
             }
 
             Text {
-                id: element3
-                x: 99
-                y: 141
-                width: 152
+                id: threathsFoundLabel
+                x: 117
+                y: 162
+                width: 144
                 height: 28
                 color: "#ffffff"
                 text: qsTr("Threats Found:")
@@ -922,9 +981,9 @@ Window {
             }
 
             Text {
-                id: element4
-                x: 85
-                y: 171
+                id: currentThreatLabel
+                x: 101
+                y: 192
                 width: 167
                 height: 28
                 color: "#ffffff"
@@ -934,9 +993,9 @@ Window {
             }
 
             Text {
-                id: element6
-                x: 269
-                y: 47
+                id: statusText
+                x: 285
+                y: 21
                 width: 103
                 height: 28
                 color: "#61f340"
@@ -946,9 +1005,9 @@ Window {
             }
 
             Text {
-                id: element7
-                x: 269
-                y: 78
+                id: lastFullScanText
+                x: 285
+                y: 52
                 width: 142
                 height: 28
                 color: "#ffffff"
@@ -958,9 +1017,9 @@ Window {
             }
 
             Text {
-                id: element8
-                x: 269
-                y: 109
+                id: lastUpdateText
+                x: 285
+                y: 136
                 width: 142
                 height: 28
                 color: "#ffffff"
@@ -970,9 +1029,9 @@ Window {
             }
 
             Text {
-                id: element9
-                x: 269
-                y: 141
+                id: threathsFoundText
+                x: 285
+                y: 163
                 width: 148
                 height: 28
                 color: "#ffffff"
@@ -982,9 +1041,9 @@ Window {
             }
 
             Text {
-                id: element10
-                x: 269
-                y: 171
+                id: currentThreatsText
+                x: 285
+                y: 193
                 width: 167
                 height: 28
                 color: "#ffffff"
@@ -996,13 +1055,61 @@ Window {
             Text {
                 id: element5
                 x: 202
-                y: -34
+                y: -28
                 width: 142
                 height: 23
                 color: "#ffffff"
                 text: qsTr("Current Report")
                 font.bold: true
-                font.pixelSize: 18
+                font.pixelSize: 19
+            }
+
+            Text {
+                id: lastSingleScanLabel
+                x: 99
+                y: 107
+                width: 160
+                height: 28
+                color: "#ffffff"
+                text: qsTr("Last Single Scan:")
+                font.pixelSize: 20
+                font.bold: true
+            }
+
+            Text {
+                id: lastFullScanLabel
+                x: 123
+                y: 47
+                width: 136
+                height: 28
+                color: "#ffffff"
+                text: qsTr("Last Full Scan:")
+                font.pixelSize: 20
+                font.bold: true
+            }
+
+            Text {
+                id: lastSmartScanText
+                x: 283
+                y: 79
+                width: 142
+                height: 28
+                color: "#ffffff"
+                text: qsTr("07/12/2022")
+                font.pixelSize: 20
+                font.bold: true
+            }
+
+            Text {
+                id: lastSingleScanText
+                x: 283
+                y: 107
+                width: 142
+                height: 28
+                color: "#ffffff"
+                text: qsTr("07/12/2022")
+                font.pixelSize: 20
+                font.bold: true
             }
         }
 
@@ -1019,12 +1126,12 @@ Window {
 
         Text {
             id: currentDateText
-            x: 1183
+            x: 1187
             y: 29
             width: 89
             height: 25
             color: "#ffffff"
-            text: qsTr("7/29/2022")
+            text: qsTr("7/29/22")
             font.pixelSize: 16
         }
 
@@ -1043,6 +1150,6 @@ Window {
 }//Main Window end
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.75}
+    D{i:0;formeditorZoom:0.66}
 }
 ##^##*/

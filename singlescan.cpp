@@ -1,16 +1,19 @@
 #include "singlescan.h"
 
-//Reload
 SingleScan::SingleScan(QThread *parent) : QThread(parent){
+    numScannedFiles = 0;
     getRequiredFiles();
 }
 
 void SingleScan::run(){
     emit scanStart();
-        foreach (const QString &str, virusList){
+    //numScannedFiles++;
+    emit scannedFileNumS("1");
+        foreach (const QString &str, virusList){   
             hashType = 0;
             if(!stopSingleThread){
                 foreach(const QString &hString, hashList){
+
                     hashType++;
                     if (hString == str) {
                         //currentList << location;

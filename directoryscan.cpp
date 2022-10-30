@@ -4,7 +4,7 @@ DirectoryScan::DirectoryScan(QThread *parent) : QThread(parent){
    lineNumberOfVirusFile = 0;
    numberOfHashesTested = 0;
    lineNumberOfFilePaths = 0;
-   numFilesScanned = 0;
+   expectedNumFilesToScan = 0;
    getRequiredFiles();
 }
 
@@ -13,6 +13,10 @@ void DirectoryScan::run(){
     emit scanStartx();
     foreach (const QString &hash, hashList){
         numberOfHashesTested++;
+        //numFilesScanned++;
+        //tempX = QString::number(numFilesScanned);
+        qDebug() << "Number of hashes tested...... " << numberOfHashesTested;
+        emit scannedFileNumD(QString::number(numberOfHashesTested));
         //qDebug() << numberOfHashesTested;
         foreach (const QString &str, virusList){
             lineNumberOfVirusFile++;
@@ -55,12 +59,11 @@ void DirectoryScan::getRequiredFiles(){
     foreach (QString element, list){
         QDirIterator directory(element, QDirIterator::Subdirectories);
         while (directory.hasNext()){
-            if(directory.filePath().isEmpty()){;
-                directory.next();
-            }else{
+            //if(directory.filePath().isEmpty()){;
+                //directory.next();
+            //}else{
                 QString path = directory.filePath();
-                numFilesScanned++;
-                qDebug() << "File num: " << numFilesScanned << "| The path is: " << path;
+
                 pathForHashList << path;
                 QFileInfo fi(element);
                 QString fn = fi.fileName();
@@ -69,10 +72,13 @@ void DirectoryScan::getRequiredFiles(){
                 if (inputFileFromDirs.open(QIODevice::ReadOnly)){
                     QByteArray fileData = inputFileFromDirs.readAll();
                     hashDataMd5 = QCryptographicHash::hash(fileData, QCryptographicHash::Md5).toHex();
-                    qDebug() << hashDataMd5;
-                    hashList << hashDataMd5;
+                    //qDebug() << hashDataMd5;
+                    expectedNumFilesToScan++;
+                    QString tempXC = QString::number(expectedNumFilesToScan);
+                    qDebug() << "File num: " << tempXC << "| The path is: " << path;
+                    hashList << hashDataMd5;  
                 }
-            }
+            //}
             directory.next();
         }
     }

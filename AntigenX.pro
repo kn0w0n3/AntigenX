@@ -1,6 +1,6 @@
 QT += quick
 QT += core gui
-
+QT += sql
 QT += widgets
 QT += network
 #QT += core
@@ -18,6 +18,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+        database.cpp \
         directoryscan.cpp \
         main.cpp \
         maincontroller.cpp \
@@ -39,6 +40,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+    database.h \
     directoryscan.h \
     maincontroller.h \
     singlescan.h \

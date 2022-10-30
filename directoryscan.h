@@ -21,6 +21,7 @@ signals:
     void scanStartx();
     void scanCompletex();
     void infectedFilesx(QString);
+    void scannedFileNumD(QString);
 
 public slots:
 void getRequiredFiles();
@@ -29,6 +30,7 @@ private:
     QStringList directories;
     QStringList virusList;
     QStringList list;
+    QString tempX;
     QByteArray hashDataMd5;
     QStringList hashList;
     QStringList pathForHashList;
@@ -37,6 +39,6 @@ private:
     int numberOfHashesTested;
     int lineNumberOfFilePaths;
     bool exitVirusListLoop;
-    int numFilesScanned;
+    int expectedNumFilesToScan;
 };
 #endif // DIRECTORYSCAN_H

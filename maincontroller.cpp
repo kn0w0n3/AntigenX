@@ -2,7 +2,11 @@
 
 MainController::MainController(QWidget *parent) :QWidget(parent){
     fileCount = 0;
+    database = new Database();
+    //connect(directoryScan, &DirectoryScan::scannedFileNum, this, &MainController::handleScanOpsInfo);
     //downloadSignatures();
+    //qDebug() << "Emitting file count test.....";
+    //emit fileCountInfo(dirScanedFileCount);
 }
 
 void MainController::singleFileScan(){
@@ -10,6 +14,8 @@ void MainController::singleFileScan(){
     connect(singleFileScanThread, &SingleScan::scanStart, this, &MainController::handleScanStart);
     connect(singleFileScanThread, &SingleScan::scanComplete, this, &MainController::handleScanComplete);
     connect(singleFileScanThread, &SingleScan::infectedFiles, this, &MainController::displayInfectedFiles);
+    connect(singleFileScanThread, &SingleScan::scannedFileNumS, this, &MainController::handleScanOpsInfo);
+
     connect(singleFileScanThread, &SingleScan::finished, singleFileScanThread, &QObject::deleteLater);
     singleFileScanThread->start();
 }
@@ -17,9 +23,10 @@ void MainController::singleFileScan(){
 //TODO Set up the scan start message for directory scan to notify qml.
 void MainController::scanDirectory(){
     directoryScan = new DirectoryScan();
-    //connect(directoryScan, &DirectoryScan::scanStartx, this, &MainController::handleScanStart);
+    connect(directoryScan, &DirectoryScan::scanStartx, this, &MainController::handleScanStart);
     connect(directoryScan, &DirectoryScan::scanCompletex, this, &MainController::handleScanComplete);
     connect(directoryScan, &DirectoryScan::infectedFilesx, this, &MainController::displayInfectedFiles);
+    connect(directoryScan, &DirectoryScan::scannedFileNumD, this, &MainController::handleScanOpsInfo);
     connect(directoryScan, &DirectoryScan::finished, directoryScan, &QObject::deleteLater);
     //directoryScan->stopThread = false;
     directoryScan->start();
@@ -29,6 +36,13 @@ void MainController::scanDirectory(){
 void MainController::handleScanStart(){
     //qDebug() << "Back in main control hndle scan start";
     emit scanStarted();
+}
+
+void MainController::handleScanOpsInfo(QString fileNumData){
+    //qDebug() << fileNumData;
+    //qDebug() << "In handleScanOPs in Main.......... file count";
+    dirScanedFileCount = fileNumData;
+    emit fileCountInfo(dirScanedFileCount);
 }
 
 //Display info on screen based on scan completion
@@ -121,4 +135,9 @@ void MainController::updateProgBarFileOps(int n){
 
 void MainController::updateStatus(QString state){
 
+}
+
+QString MainController::getDirScanFileCount(){
+    return dirScanedFileCount;
+    emit fileCountInfo(dirScanedFileCount);
 }
