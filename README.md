@@ -69,5 +69,5 @@ Cuckoo Sandbox consists of a central management software which handles sample ex
 https://cuckoosandbox.org/  
 
 # Progress:    
-10/20/22  
+10/30/22  
 ![progress-10-30-22](https://user-images.githubusercontent.com/22214754/198890155-bdc5823c-815b-4f40-befe-0cf6546192d0.gif)  
