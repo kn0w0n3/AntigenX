@@ -75,6 +75,4 @@ https://cuckoosandbox.org/
 
 # Progress:    
 10/30/22  
-![progress-10-30-22](https://user-images.githubusercontent.com/22214754/198890155-bdc5823c-815b-4f40-befe-0cf6546192d0.gif) 
-
-![x2-animated](https://user-images.githubusercontent.com/22214754/199382050-47d21caa-21b6-4bbe-b144-745fa335c5db.gif)    
+![progress-10-30-22](https://user-images.githubusercontent.com/22214754/198890155-bdc5823c-815b-4f40-befe-0cf6546192d0.gif)    
