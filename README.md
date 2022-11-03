@@ -8,7 +8,7 @@ AntigenX is an antivirus program being developed specifically for Linux. This go
 * Virus and Malware Detection 
 * GUI Interface   
  
-![AntigenX-Linux-GUI-F2-10-16-22](https://user-images.githubusercontent.com/22214754/196059096-05d0cd25-aeb2-447e-8307-dc7b39cfca21.gif)            
+![antigenx-scan-url-vpn-11-2-22](https://user-images.githubusercontent.com/22214754/199652972-4f47d1fa-eaa3-4277-b210-b783d350fa82.gif)              
 
 # Developed with:  
 
