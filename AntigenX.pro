@@ -23,7 +23,8 @@ SOURCES += \
         main.cpp \
         maincontroller.cpp \
         singlescan.cpp \
-        updatecontroller.cpp
+        updatecontroller.cpp \
+        urlchecker.cpp
 
 RESOURCES += qml.qrc \
     images.qrc
@@ -44,4 +45,5 @@ HEADERS += \
     directoryscan.h \
     maincontroller.h \
     singlescan.h \
-    updatecontroller.h
+    updatecontroller.h \
+    urlchecker.h

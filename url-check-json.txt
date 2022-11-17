@@ -1,0 +1,13 @@
+  {
+    "client": {
+      "clientId":      "secretcitylabs",
+      "clientVersion": "1.5.2"
+    },
+    "threatInfo": {
+      "threatTypes":      ["MALWARE", "SOCIAL_ENGINEERING"],
+      "platformTypes":    ["WINDOWS"],
+      "threatEntryTypes": ["URL"],
+      "threatEntries": {"url": "https://testsafebrowsing.appspot.com/apiv4/IOS/MALWARE/URL/"}
+    }
+  }
+

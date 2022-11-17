@@ -1,99 +1,102 @@
-472a53ef097f42
-4d8d0145c479c7d4018d3cd7833ec2a9
-e4df3f01ad056343c509f96fdc9da909
-9e0128be1c73e3f542b9653866597163
-2fe6c6ac24e2fa8c577e4d0f74e8c46d
-f110926ef2d180c6becb520871a3835c
-e60abeaa722eaf7f253d7139b84642a1
-538003dba216a148e0ca39a33478452c
-a63d186e45e6ce8ca35867d0c9be166a
-944f7178757b015e2b74042753c85871
-9c6d844c62875aa523d9c30475982643
-f7cc713164420f355ba3c79daff2cc78
-3011e405d0df613eb58e1c76bcbb3d29
-060c95bd63bbe744d671bf5365f71121
-ac384ea6a160bdfc8cbf538deeb3f62d
-11ae615f2b841f039c53185d265cadfa
-c78f962cca8c1ea4cb11ea6d8e9b632f
-4011dc474f9b7b70c5a3926747235910
-21a85e9028b60df8dd569ae6071e73f8
-0972c9e630de8fcf7b1408f40b17191b
-5781960611bd363ed3b4e33084d54e22
-49c79cdfcdb8982eb109774f674a7adb
-053bd9615a9690a6560389b523a35386
-287c6581372fddc46f5d9f42c8a52461
-17069d7f58f5eacccdb62be0b0972d8f
-278a5486f82e0b01586e893946955e94
-12dd087644f0797e57c2f85da118b538
-264dd6d1797d2398ac7b44843ae94b3c
-0b1c3bba3ed5e7166a8b6a06c18bdfaa
-4e830c1aaf1ee23185e6dcd9416b9f59
-06b543a0cdfd462b5a696cd3a5d1e951
-5dcc0823fb24ccd4ae8298b59fa39887
-ad452f73014fad581c69bae7940c11ff
-4114b6aba3f9f0774c6268d0a63141c8
-b656c9aad456aacbfa3ceeb88d6c8c4f
-07ef6e47c0936b3c1212376238aac945
-9ca66916820324f3f79ce579fd8120e3
-568a47e793e3a01ba03c5f08d67bde57
-658326d388f89dd2ee6b32eabcd8d916
-5167d78778ba2526c1c8d12ce138aef3
-27ee964c00d517bfba25dfb6df500300
-35806fa5c4cd332f45c6beac40f2e43c
-35e560bd284d7107c4652a84462afdfd
-2287bde2afc2d40b962f23c50a402160
-11ccc74282119644eba82cc365f4806e
-a50da7215a5d63d3e7ad59738101a097
-07e49f8b1b369ea267a26bf2fb795160
-e8a058d3edb8f47820a9e7cc3ac814d7
-a1f78cfaa3ff78c737760d8f67b904eb
-3b264ef61fe3be1554ef657cd439602a
-e0e7194ea16429eabf772a30223af516
-4b7ca214691fe1aeb36d0ef4cecc1c8f
-52162af8166831d849c7c668f9a8db44
-00277945d5606140382a3872cde5cf7f
-072e4ce48ad8ac10ece5de5fdb397f1e
-c7cdd7b1b5a09715d15b7111373370c2
-77a88e049b24d1825872cf0473989f5a
-654b363e62ba4082e02601217de040fa
-e1e2dab92ee1fe6745a79e1953746f1b
-2273d47195d5bee2706835caca4e034b
-72e4f6634718fc170601fdacfcddedd4
-0b497e47b9b51e3a8908716320b247cb
-55ff7e888a996e7eac6416041f4d1e7e
-9c380199347af09a45caff7ad0652e9c
-0296fa0c818a79c766230a7dc821993d
-0ecfdd2a60792502cf4d1dcf7edcac92
-7c50e7d296572254f69794655f3d1597
-39324fb9cd1109bf3a63c441f3206a2c
-77d6bb6959325008fd29096310a9d96e
-abea9148743206aabfef9376fd888759
-3f5c7ba602c9af18c6c1b13f853c66db
-a4893d4d92904b5090cd0b442db0659a
-0c74337c485a202a8de88198ead7a5d1
-6611b65a47e062267be78063b05bcf2c
-3c39656fdc322b6c4d84b48828a4f16e
-157034b7524ee3cd21be6bc4286475c4
-6a4707b0361e6a0e5b1b34617b595a5a
-0ac1019b0d66f5e51db23bdee18f5736
-9a34086d90b4167ced33933f659d9f89
-0b4998bef8fadb116b7559c92fa66cbd
-ae50c020cb24c871dcf926a5197b8dce
-da416eb3d6d9ed38daccb7ca4aff986b
-ece29994dd24a8de05067f4268f79983
-4830dddde1ca63afc73ada2cd618ffa1
-2a43e0e514bf478fe11c728678b2d981
-b762a66ca590831dab360b68393daa59
-6c8eeb3b9c96de803d2e7d6955350623
-40193f8707d9c3a39dd7a349595ce7c9
-a674c16b5dfcbecd7ddf49ba78bbddf2
-7895643c98e35e1a0dbec0585d4edf50
-fc41f12da76d9b1108ce4a278c3f88bf
-fe6167712b2ea99394d1f503c612e906
-68135c9bd63c6b84a52c18a18f74f23f
-7f70e3c1fde646cd547164077e5625b8
-a31099e1778f05f4cf67ad4fc2af3bd9
-4cc630d7270ae4ae97ae3b5091b7170c
-4fcf1ca0f4953d094d42dd3d0026e81f
-069856daa1f92f48345170332fb652d0
-819d617be28689374
+#ifndef DATABASE_H
+#define DATABASE_H
+#include <QObject>
+#include <QSql>
+#include <QSqlQuery>
+#include <QtSql>
+#include <QSqlDatabase>
+#include <QDebug>
+
+class Database: public QObject{
+    Q_OBJECT
+
+public:
+    explicit Database(QObject *parent = nullptr);
+
+signals:
+    void dbmwStatus2Qml(QString dbmwStatus2Qml_);
+    void dbmwlastFullScan2Qml(QString dbmwlastFullScan2Qml_);
+    void dbmwLastSmartScan2Qml(QString dbmwLastSmartScan2Qml_);
+    void dbmwLastSingleScan2Qml(QString dbmwLastSingleScan2Qml_);
+    void dbmwLastUpdate2Qml(QString dbmwLastUpdate2Qml_);
+    void dbmwThreatsFound2Qml(QString dbmwThreatsFound2Qml_);
+    void dbmwCurrentThreats2Qml(QString dbmwCurrentThreats2Qml_);
+    /*
+    void sendMsgConfirmToQml2(QString);
+    void dbBillNameToQml(QString billName_);
+    void dbDueDateToQml(QString dueDate_);
+    void dbNotifyDateToQml(QString notifyDate_);
+    void dbAmountDueToQml(QString amountDue_);
+    void dbSvdEmailToQml(QString savedEmail_);
+    void fEmailToQml(QString fEmail_);
+    void fEmailToQmlDone(QString fEmailDone_);
+    void fBillToQmlDone(QString fBilllDone_);
+    */
+public slots:
+    void getMainWinGuiInfo(QString mwStatusF, QString mwlastFullScanF, QString mwLastSmartScanF, QString mwLastSingleScanF, QString mwLastUpdateF, QString mwThreatsFoundF, QString mwCurrentThreatsF);
+    void getMainWinDBInfo();
+    void setMainWinInfo2Db();
+    /*
+    void receiveBillInfoFromQML(QString bName,QString dDate, QString dtNotify, QString aDue);
+    void insertBillDbInfo();
+    void receiveEmailInfoFromQML(QString uName, QString pWord);
+    void insertEmailToDb();
+    void populateCurrentReminders();
+    void populateSvdEmailBox();
+    void getFirstDatabaseEntries();
+    */
+private:
+    //Variables to hold the incoming data from the main window table.
+    QString mwStatus;
+    QString mwlastFullScan;
+    QString mwLastSmartScan;
+    QString mwLastSingleScan;
+    QString mwLastUpdate;
+    QString mwThreatsFound;
+    QString mwCurrentThreats;
+
+
+
+    //Connections for working with different tables simultaneously.
+    QSqlDatabase mainWinDB =  QSqlDatabase::addDatabase("QSQLITE","conn1-MainWinInfo");
+    QString mainWInDbPath = "/home/voldem0rt/Desktop/AntigenX-main/db/program_info.db";
+
+    /*
+    //Connections for working with different tables simultaneously.
+    QSqlDatabase billDB;
+    QSqlDatabase sEmailDB;
+    QSqlDatabase rEmailDB;
+    QSqlDatabase populateDB;
+    QSqlDatabase popEmailDB;
+    QSqlDatabase fEmailDB;
+
+    //Variables to hold the incoming data from the reminder form.
+    QString billName;
+    QString dueDate;
+    QString dateToNotify;
+    QString amountDue;
+
+    //Variables to hold the incoming data from the database.
+    QString pBillName;
+    QString pDueDate;
+    QString pDateToNotify;
+    QString pAmountDue;
+
+    //Variables to hold the incoming data for the email address to save to the database.
+    QString iUsername;
+    QString iPassword;
+    QString iServer = "smtp.gmail.com";
+    QString iPortNumber = "465";
+
+
+    //Variable to hold the incoming saved sender email addresses to poulate the saved email box
+    QString _emailAddress;
+
+    int counter = 0;
+    int counterTwo = 0;
+
+    QString fEmailInDb;
+    */
+};
+
+#endif // DATABASE_H

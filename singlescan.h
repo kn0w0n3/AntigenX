@@ -34,6 +34,5 @@ private:
     QString fileName;
     QString filePath;
     int numScannedFiles;
-
 };
 #endif // SINGLESCAN_H
