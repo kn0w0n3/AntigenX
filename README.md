@@ -1,4 +1,4 @@
-![github readme header 2](https://user-images.githubusercontent.com/22214754/196063614-bfe17689-e62b-4a37-bf9a-6952ea93aa51.png)      
+![AntigenX-Lightning-6MB](https://user-images.githubusercontent.com/22214754/202864754-3292bb0b-93f0-468f-95b4-e676b607f06d.gif)        
     
 AntigenX is an antivirus program being developed specifically for Linux. This goal of this project is to provide a free, reliable, and open source antivirus solution that will deliver protection for average and advanced users. AntigenX will include:  
 
