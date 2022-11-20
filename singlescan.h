@@ -1,6 +1,13 @@
 #ifndef SINGLESCAN_H
 #define SINGLESCAN_H
 
+/*
+Author: Jonathan Baird
+Date: 16NOV2022
+Purpose: Thread for single scan
+Contact: tr14rc3@gmail.com
+*/
+
 #include <QThread>
 #include <QObject>
 #include <QFileDialog>
@@ -8,6 +15,7 @@
 #include <QCryptographicHash>
 #include <QListIterator>
 #include <QTextStream>
+#include <QDebug>
 
 class SingleScan: public QThread{
     Q_OBJECT
@@ -15,13 +23,13 @@ class SingleScan: public QThread{
 public:
     SingleScan(QThread *parent = 0);
     void run();
-    bool stopSingleThread;
+    bool stopSingleThread = false;
 
 signals:
     void scanStart();
     void scanComplete();
     void infectedFiles(QString);
-     void scannedFileNumS(QString);
+    void scannedFileNumS(QString);
 
 public slots:
     void getRequiredFiles();
@@ -34,5 +42,6 @@ private:
     QString fileName;
     QString filePath;
     int numScannedFiles;
+    bool fileInfected;
 };
 #endif // SINGLESCAN_H

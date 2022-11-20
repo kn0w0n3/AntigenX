@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>video/lightning.mp4</file>
+    </qresource>
+</RCC>

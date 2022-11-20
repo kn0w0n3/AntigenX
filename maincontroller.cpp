@@ -1,16 +1,23 @@
 #include "maincontroller.h"
 
+/*
+Author: Jonathan Baird
+Date: 16NOV2022
+Purpose: Main controller for antivirus program
+Contact: tr14rc3@gmail.com
+*/
+
 MainController::MainController(QWidget *parent) :QWidget(parent){
     fileCount = 0;
 }
 
+//Funtction to scan a single file for viruses/malware on a separate thread.
 void MainController::singleFileScan(){
     singleFileScanThread = new SingleScan();
     connect(singleFileScanThread, &SingleScan::scanStart, this, &MainController::handleScanStart);
-    connect(singleFileScanThread, &SingleScan::scanComplete, this, &MainController::handleScanComplete);
+    connect(singleFileScanThread, &SingleScan::scanComplete, this, &MainController::relayScanDoneSir);
     connect(singleFileScanThread, &SingleScan::infectedFiles, this, &MainController::displayInfectedFiles);
     connect(singleFileScanThread, &SingleScan::scannedFileNumS, this, &MainController::handleScanOpsInfo);
-
     connect(singleFileScanThread, &SingleScan::finished, singleFileScanThread, &QObject::deleteLater);
     singleFileScanThread->start();
 }
@@ -19,7 +26,7 @@ void MainController::singleFileScan(){
 void MainController::scanDirectory(){
     directoryScan = new DirectoryScan();
     connect(directoryScan, &DirectoryScan::scanStartx, this, &MainController::handleScanStart);
-    connect(directoryScan, &DirectoryScan::scanCompletex, this, &MainController::handleScanComplete);
+    connect(directoryScan, &DirectoryScan::scanCompletex, this, &MainController::relayScanDoneDir);
     connect(directoryScan, &DirectoryScan::infectedFilesx, this, &MainController::displayInfectedFiles);
     connect(directoryScan, &DirectoryScan::scannedFileNumD, this, &MainController::handleScanOpsInfo);
     connect(directoryScan, &DirectoryScan::finished, directoryScan, &QObject::deleteLater);
@@ -27,43 +34,71 @@ void MainController::scanDirectory(){
     directoryScan->start();
 }
 
+//Function to download signatures
+void MainController::downloadSignatures(){
+    //qDebug() <<"Attempting to download signatures......";
+    updateThread = new QThread();
+    updateController = new UpdateController();
+    connect(updateController, &UpdateController::currentProgress, this, &MainController::updateProgressBar);
+    connect(updateController, &UpdateController::currentProgressFiles, this, &MainController::updateProgBarFileOps);
+    connect(updateController, &UpdateController::state, this, &MainController::updateStatus);
+    //updateController->moveToThread(updateThread);
+    connect(updateThread, &QThread::finished, updateController, &QObject::deleteLater);
+    updateThread->start();
+}
+
+//Function to send progress bar download values to QML GUI
+void MainController::updateProgressBar(int bytesRead, int totalBytes ){
+    emit pBarActivity("Downloading...");
+    totBytesVal = totalBytes;
+    qDebug() << "The totalBytes value is: " << totalBytes;
+    //qDebug() << totBytesVal;
+    currentValue = bytesRead;
+    //qDebug() << currentValue;
+    emit totalBytesToQml(totalBytes);
+    emit txtBytesReadToQml(txtBytestoQML);
+    emit bytesReadToQml(bytesRead);
+}
+
 //Set message on screen based on operation
 void MainController::handleScanStart(){
     //qDebug() << "Back in main control hndle scan start";
-    emit scanStarted();
+    emit sScanStarted();
 }
 
 void MainController::handleScanOpsInfo(QString fileNumData){
     //qDebug() << fileNumData;
     //qDebug() << "In handleScanOPs in Main.......... file count";
+    //QThread::msleep(500);
     dirScanedFileCount = fileNumData;
-    emit fileCountInfo(dirScanedFileCount);
+    emit dNumFilesScanned(dirScanedFileCount);
+
 }
 
-//Display info on screen based on scan completion
-void MainController::handleScanComplete(){
-    if(fileCount > 0){
-        //send message to qml
-        fileCount = 0;
-    }else{
-        theInfectedFile = "No Threats Found!";
-        emit sendResultToQml(theInfectedFile);
-        emit scanComplete();
-    }
+//Function to relay the scan directory done message to the QML GUI
+void MainController::relayScanDoneDir(){
+    emit dScanDone();
 }
 
-void MainController::test(){
-    //qDebug() << "works now";
+//Function to relay the scan single directory done message to the QML GUI
+void MainController::relayScanDoneSir(){
+    emit sScanDone();
 }
 
 //Receive data from the thread and send it the the qml GUI
 void MainController::displayInfectedFiles(QString files){
-     //qDebug() << "In display infected files";
+    //QThread::msleep(500);
+     qDebug() << "In display infected files";
      fileCount++;
      qDebug() << fileCount;
      theInfectedFile = files;
+     qDebug() << "Infected file info is: " << theInfectedFile;
      //Send the data to the GUI
-     emit sendResultToQml(theInfectedFile);
+     if(theInfectedFile == "0"){
+         emit sInfectedFiles("No threats found.......");
+     }else{
+         emit sInfectedFiles(theInfectedFile);
+     }
 }
 
 void MainController::stopThread(){
@@ -100,30 +135,6 @@ void MainController::setFiles(QString){
 
 }
 
-void MainController::downloadSignatures(){
-    //qDebug() <<"Attempting to download signatures......";
-    updateThread = new QThread();
-    updateController = new UpdateController();
-    connect(updateController, &UpdateController::currentProgress, this, &MainController::updateProgressBar);
-    connect(updateController, &UpdateController::currentProgressFiles, this, &MainController::updateProgBarFileOps);
-    connect(updateController, &UpdateController::state, this, &MainController::updateStatus);
-    updateController->moveToThread(updateThread);
-    connect(updateThread, &QThread::finished, updateController, &QObject::deleteLater);
-    updateThread->start();
-}
-
-//Send Progress Bar download values to QML GUI
-void MainController::updateProgressBar(int bytesRead, int totalBytes ){
-    emit pBarActivity("Downloading...");
-    totBytesVal = totalBytes;
-    //qDebug() << totBytesVal;
-    currentValue = bytesRead;
-    //qDebug() << currentValue;
-    emit totalBytesToQml(totalBytes);
-    emit txtBytesReadToQml(txtBytestoQML);
-    emit bytesReadToQml(bytesRead);    
-}
-
 void MainController::updateProgBarFileOps(int n){
 
 }
@@ -132,11 +143,7 @@ void MainController::updateStatus(QString state){
 
 }
 
-QString MainController::getDirScanFileCount(){
-    return dirScanedFileCount;
-    emit fileCountInfo(dirScanedFileCount);
-}
-
+//Function to check for malicious URLs using the Google Safe Browsing API.
 void MainController::checkUrl(QString userSuppliedUrl){
 
     urlToCheck  = userSuppliedUrl;
@@ -150,12 +157,10 @@ void MainController::checkUrl(QString userSuppliedUrl){
         qDebug()<<"Failed to open " << jsonFilePath;
         //exit(1);
     }
-
         //Read the text from the file
         QTextStream file_text(&jsonTextFile);
         json_string = file_text.readAll();
         //qDebug() <<"The JSON string text from the file is: " << json_string;
-
 
     jsonTextFile.close();
 
@@ -178,13 +183,14 @@ void MainController::checkUrl(QString userSuppliedUrl){
     //POST https://safebrowsing.googleapis.com/v4/threatMatches:find?key=API_KEY HTTP/1.1
     //Content-Type: application/json
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+    //request.setHeader(QNetworkRequest::ContentTypeHeader, QVariant("application/json"));
 
     //This (GET request) can be used to test if there's a response from Google without using a JSON array.
     //QNetworkReply *reply = mgr->get(request);
 
     //The POST request requires two arguments. The first argument is a QUrl. The second argument is a QByteArray.
     //Google provides this as an example: POST https://safebrowsing.googleapis.com/v4/threatMatches:find?key=API_KEY HTTP/1.1 - is it clear what to include in our string? No. See below.
-    //The string to provide to QUrl is "https://safebrowsing.googleapis.com/v4/threatMatches:find?key=API_KEY" Leave off the HTTP/1.1 and make sure to replace the "API_KEY" text with an API key
+    //The string to provide to QUrl is "https://safebrowsing.googleapis.com/v4/threatMatches:find?key=API_KEY" Leave the HTTP/1.1 off and make sure to replace the "API_KEY" text with an API key
     QNetworkReply *reply = mgr->post(request, jsonByteArray);
     QObject::connect(reply, &QNetworkReply::finished, [=](){
         if(reply->error() == QNetworkReply::NoError){
@@ -202,15 +208,9 @@ void MainController::checkUrl(QString userSuppliedUrl){
         }
         reply->deleteLater();
     });
-//emit urlScanComplete();
-
+    //emit urlScanComplete();
 }
-
-
-
 
 void MainController::processNetworkData(QString ApiData){
     qDebug() << ApiData;
 }
-
-

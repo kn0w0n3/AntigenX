@@ -5,6 +5,7 @@ QT += widgets
 QT += network
 #QT += core
 CONFIG += c++11
+QT += multimedia multimediawidgets
 
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
@@ -23,11 +24,11 @@ SOURCES += \
         main.cpp \
         maincontroller.cpp \
         singlescan.cpp \
-        updatecontroller.cpp \
-        urlchecker.cpp
+        updatecontroller.cpp
 
 RESOURCES += qml.qrc \
-    images.qrc
+    images.qrc \
+    video.qrc
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
@@ -45,5 +46,4 @@ HEADERS += \
     directoryscan.h \
     maincontroller.h \
     singlescan.h \
-    updatecontroller.h \
-    urlchecker.h
+    updatecontroller.h

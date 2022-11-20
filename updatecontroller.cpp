@@ -1,16 +1,21 @@
 #include "updatecontroller.h"
 
+/*
+Author: Jonathan Baird
+Date: 16NOV2022
+Purpose: Update controller for antivirus program | Networking | Download Signatures
+Contact: tr14rc3@gmail.com
+*/
+
 UpdateController::UpdateController(){
 
     //Create the network access manager for dowloading updates/signature files.
     manager = new QNetworkAccessManager(this);
 
-
-
     //Timer to download signatures every ten seconds.
     fileDownloader = new QTimer();
     connect(fileDownloader, SIGNAL(timeout()), this, SLOT(downloadSignatures()));
-    qDebug() << "Starting timer......";
+    qDebug() << "Update controller initializing";
     //fileDownloader->start(30000);
     //downloadSignatures();
 }
@@ -63,7 +68,7 @@ void UpdateController::processIncomingData(){
 
 //Set the URL for the file download. Connect signals and slots to get the data and metadata.
 void UpdateController::downloadSignatures(){
-    //qDebug() << "Requesting data over network!";
+    qDebug() << "Requesting data over network!";
 
     //392mb file size test
      request.setUrl(QUrl("https://www.secretcitylabs.com/VirusShare_00000.md5.txt"));

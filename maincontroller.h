@@ -1,26 +1,38 @@
 #ifndef MAINCONTROLLER_H
 #define MAINCONTROLLER_H
+
+/*
+Author: Jonathan Baird
+Date: 16NOV2022
+Purpose: Main controller for antivirus program
+Contact: tr14rc3@gmail.com
+*/
+
 #include <QObject>
-#include <QFileInfo>
 #include <QThread>
-#include <QFileDialog>
-#include <QStringList>
-#include <QDebug>
-#include <QFile>
-#include <QFileDialog>
 #include <QWidget>
+
+//File Ops Libs
+#include <QFile>
+#include <QFileInfo>
+#include <QFileDialog>
+
+//Network Libs
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QNetworkRequest>
+
+//JSON Libs
 #include <QJsonObject>
 #include <QJsonDocument>
 #include <QString>
 
+//Developer Classes
 #include "singlescan.h"
 #include "updatecontroller.h"
 #include "directoryscan.h"
-#include "urlchecker.h"
 
+#include <QDebug>
 
 class MainController:  public QWidget{
     Q_OBJECT
@@ -29,75 +41,93 @@ public:
     MainController(QWidget *parent = nullptr);
 
 signals:
+    //Directory Scan Signals
+    void dScanStarted(void);
+    void dScanDone(void);
+    void dNumFilesScanned(QString dirNumFilesScaned_X);
+    void dInfectedFiles(QString infectedFiles_X);
+
     void change(QString);
-    void scanStarted(void);
-    void scanComplete(void);
+
+    //Single Scan Signals
+    void sScanStarted(void);
+    void sScanDone(void);
     void sendResultToQml(QString singleScanResult);
+    void sInfectedFiles(QString sInfectedFiles_Y);
     void sSRToQMLDone(void);
+
+    //Progress bar signals
     void totalBytesToQml(int tBTQML);
     void bytesReadToQml(int bRTQML);
     void txtBytesReadToQml(QString txtBRTQML);
     void pBarActivity(QString);
     void pBarVisibility(bool);
-    void fileCountInfo(QString numFilesScanned_);
 
     //Google Safe Browse Signals
     void urlResultsToQml(QString urlResut_1);
-    void urlScanStarted();
-    void urlScanComplete();
+    void urlScanStarted(void);
+    void urlScanComplete(void);
 
 public slots:
-    void singleFileScan();
-    void scanDirectory();
-    void handleScanStart();
+    void scanDirectory(void);
+
+    //Slots for single scan
+    void singleFileScan(void);
+    void handleScanStart(void);
     void handleScanOpsInfo(QString);
-    void handleScanComplete();
-    void test();
+    void relayScanDoneDir(void);
+    void relayScanDoneSir(void);
+
     void displayInfectedFiles(QString);
-    void stopThread();
+    void stopThread(void);
     QString getFiles();
-    int getCurrentValue();
-    QString getTxtCurrentValue();
-    int getTotalBytesValue();
+
+    //Slots for progress bar
+    int getCurrentValue(void);
+    QString getTxtCurrentValue(void);
+    int getTotalBytesValue(void);
     QString getpBarText();
-    bool getpBarVisibility();
-    void setFiles(QString);
-    void downloadSignatures();
+
     void updateProgressBar(int, int);
     void updateProgBarFileOps(int);
+    void setFiles(QString);
+    void downloadSignatures(void);
+    bool getpBarVisibility(void);
+
     void updateStatus(QString);
-
-    QString getDirScanFileCount();
-
     void checkUrl(QString);
     void processNetworkData(QString);
 
 private:
     SingleScan *singleFileScanThread;
+    UpdateController *updateController;
+    DirectoryScan *directoryScan;
+    QThread *updateThread;
+
     bool checkTextOne;
     bool checkTextTwo;
-    QString *fileName;
-    QString theInfectedFile;
-    UpdateController *updateController;
-    QThread *updateThread;
+    bool gValBarVisibility;
+
     int currentValue;
     int totBytesVal;
-    QString gValBarActivity;
-    bool gValBarVisibility;
-    DirectoryScan *directoryScan;
     int fileCount;
+
+    QString *fileName;
+    QString theInfectedFile;
     QString txtBytestoQML = "50";
     QString dirScanedFileCount;
-    UrlChecker *urlChecker;
+    QString gValBarActivity;
+
+    //URL and JSON variables
     QJsonObject jSonObject;
+    QString json_string;
     QString jsonFilePath = "/home/voldem0rt/Documents/Qt_Projects/AntigenX-main/url-check-json2.txt";
-    QString googleUrl = "https://safebrowsing.googleapis.com/v4/threatMatches:find?key=";
-    //QString googleUrl = "https://safebrowsing.googleapis.com/v4/threatLists?key=";
+    QString googleUrl = "https://safebrowsing.googleapis.com/v4/threatMatches:find?key=YOUR_API_KEY";
+    //QString googleUrl = "https://safebrowsing.googleapis.com/v4/threatLists?key=YOUR_API_KEY";
 
     QString urlToCheck = "";
     //QString apiKey = ""
 
-    QString json_string;
     QJsonDocument testDoc;
     QByteArray jsonByteArray;
 

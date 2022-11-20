@@ -27,5 +27,6 @@
         <file>images/scan-file-btn.png</file>
         <file>images/scan-dir-btn.png</file>
         <file>images/rmv-selected-btn.png</file>
+        <file>images/lightning-and-clouds.gif</file>
     </qresource>
 </RCC>

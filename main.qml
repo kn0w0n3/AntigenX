@@ -3,7 +3,15 @@ import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
 import QtQml.Models 2.12
 import QtQuick.Controls.Styles 1.4
+import QtMultimedia 5.12
+import QtQuick.Layouts 1.12
 
+//Video Issues - no codecs
+//https://stackoverflow.com/questions/40106047/gstreamer-installation-is-missing-a-plug-in
+//https://stackoverflow.com/questions/44045842/unable-to-play-video-in-qml
+//https://stackoverflow.com/questions/39607522/no-decoder-available-for-type-video-x-h264
+
+//If designer tab is greyed out: https://stackoverflow.com/questions/8494332/design-button-grayed-out-in-qt-creator-for-qml-project
 Window {
     id: mainShell
     visible: true
@@ -16,14 +24,59 @@ Window {
 
     //All connections can and should go in one place to make them easier to find and work with.
     //I didn't know they could be organized like this. I thought they had to be with the component.
+    //Note: The first letter of signal name must be captialized even though it's not in the original signal name. Very small detail.
+    //Think you will just capitalize it in the header file? Try it and see what happens lol.
     Connections {
         target: mainController
 
         onUrlResultsToQml:{
             scanWinScrollViewText.text += urlResut_1
         }
-        onUrlScanComplete: {
 
+        onUrlScanComplete:{
+
+        }
+
+        onDScanStarted:{
+            filesScannedLabel.visible = true
+            numFilesScanned.visible = true
+        }
+
+        onDScanDone:{
+            //scanWinScrollViewText.text +=
+        }
+
+        onDNumFilesScanned:{
+            numFilesScanned.text = dirNumFilesScaned_X
+
+        }
+
+        onDInfectedFiles:{
+
+        }
+
+        onSScanStarted:{
+            filesScannedLabel.visible = true
+            numFilesScanned.visible = true
+        }
+
+        onSScanDone:{
+
+        }
+
+        onSInfectedFiles:{
+            scanWinScrollViewText.text += sInfectedFiles_Y + "\n"
+        }
+
+        onBytesReadToQml:{
+            updateProgressBar.value = bRTQML / 1000000
+            progressText.text = bRTQML/ 1000000
+        }
+
+        onTotalBytesToQml:{
+            //Currently getting -1 on the total bytes signal
+            //incomingDataSizeText.text = tBTQML
+            //updateProgressBar.to = tBTQML
         }
     }
 
@@ -33,9 +86,56 @@ Window {
         y: 0
         width: 1280
         height: 720
+        visible: true
         fillMode: Image.PreserveAspectFit
         source: "images/mx-bg-new.png"
         //anchors.fill: parent
+
+
+
+        AnimatedImage {
+            id: animatedBgLightning
+            x: 100
+            y: 0
+            width: 1180
+            height: 720
+            visible: false
+            source: "images/lightning-and-clouds.gif"
+            playing: false
+        }
+        //Experiment Video
+        Video {
+            id: videoX
+            x: 100
+            y: 4
+            //width : 1180
+            //height : 716
+            visible: false
+            //source: "/home/voldem0rt/Documents/Qt_Projects/AntigenX-main/video/lightning.avi"
+            source: "qrc:/video/lightning.mp4"
+            fillMode: VideoOutput.PreserveAspectCrop
+            anchors.leftMargin: 100
+            clip: false
+            anchors.fill: parent
+
+
+            //layer.enabled: true
+            //autoPlay: true
+            //play: false
+            loops: MediaPlayer.Infinite
+
+            //MouseArea {
+            //anchors.fill: parent
+            //onClicked: {
+            //videoX.play()
+            //}
+            // }
+
+            focus: true
+            //Keys.onSpacePressed: videoX.playbackState == MediaPlayer.PlayingState ? videoX.pause() : videoX.play()
+            //Keys.onLeftPressed: videoX.position = videoX.position - 5000
+            //Keys.onRightPressed: videoX.position = videoX.position + 5000
+        }
 
         Image {
             id: textLogo
@@ -50,18 +150,6 @@ Window {
             //sourceSize.width: 568
             //sourceSize.height: 102
             //anchors.fill: pare
-        }
-
-        AnimatedImage {
-            id: animatedX
-            x: 779
-            y: 6
-            width: 48
-            height: 52
-            visible: false
-            source: "images/x-dots-2.gif"
-            speed: 1
-            playing: true
         }
 
         Text {
@@ -85,8 +173,9 @@ Window {
             font.pixelSize: 16
         }
 
+
         Image {
-            id: image12
+            id: antibodyLogo
             x: 1223
             y: 664
             width: 47
@@ -95,6 +184,7 @@ Window {
             source: "images/antibody.png"
             fillMode: Image.PreserveAspectFit
         }
+
     }
 
     Rectangle {
@@ -556,22 +646,8 @@ Window {
                     color: "#0fa4e9"
                 }
             }
-
-            //Note: The first letter of signal name must be captialized even though it's not in the original signal name. Very small detail.
-            //Think you will just capitalize it in the header file? Try it and see what happens lol.
-            Connections{
-                target: mainController
-                onBytesReadToQml:{
-                    updateProgressBar.value = bRTQML / 1000000
-                    progressText.text = bRTQML/ 1000000
-                }
-                onTotalBytesToQml:{
-                    //Currently getting -1 on the total bytes signal
-                    //incomingDataSizeText.text = tBTQML
-                    //updateProgressBar.to = tBTQML
-                }
-            }
         }
+
 
         Text {
             id: incomingDataSizeText
@@ -644,7 +720,7 @@ Window {
                     updateProgressBar.visible = true
                     progressText.visible = true
                     downloadingText.visible = true
-                    mainController.downloadSignatures()
+                    mainController.downloadSignatures() //1
                     updateWinLCT.text = currentDate.toLocaleDateString(locale, Locale.ShortFormat)
                     //TODO: Implement sqlite db to store information
                 }
@@ -711,7 +787,7 @@ Window {
         width: 1280
         height: 720
         color: "#00ffffff"
-        visible: true
+        visible: false
 
         Rectangle {
             id: displayWindow
@@ -1049,6 +1125,7 @@ Window {
                 y: 0
                 width: 133
                 height: 38
+                visible: true
                 hoverEnabled: true
                 onEntered: {
                     scanUrlBtnImg.width = 136
@@ -1060,6 +1137,8 @@ Window {
                 }
                 onClicked: {
                     mainController.checkUrl(urlTextEdit.text);
+                    videoX.visible = true
+                    videoX.play()
                 }
                 onPressed: {
                     scanUrlBtnImg.width = 133
@@ -1195,7 +1274,7 @@ Window {
         height: 720
         color: "#00ffffff"
         //color: "#00ffffff"
-        visible: false
+        visible: true
         //Maybe move this
         Component.onCompleted: {
             database.getMainWinDBInfo()
@@ -1447,6 +1526,7 @@ Window {
     }
 
 
+
 }//Main Window end
 
 
@@ -1458,8 +1538,8 @@ Window {
 
 
 
-/*##^##
-Designer {
-    D{i:0;formeditorZoom:0.66}
-}
-##^##*/
+
+
+
+
+

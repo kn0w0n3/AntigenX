@@ -1,6 +1,13 @@
 #ifndef UPDATECONTROLLER_H
 #define UPDATECONTROLLER_H
 
+/*
+Author: Jonathan Baird
+Date: 16NOV2022
+Purpose: Update controller for antivirus program | Networking | Download Signatures
+Contact: tr14rc3@gmail.com
+*/
+
 #include <QObject>
 #include <QtNetwork>
 #include <QNetworkAccessManager>

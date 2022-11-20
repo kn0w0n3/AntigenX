@@ -1,5 +1,13 @@
 #ifndef DIRECTORYSCAN_H
 #define DIRECTORYSCAN_H
+
+/*
+Author: Jonathan Baird
+Date: 16NOV2022
+Purpose: Thread for directory scan
+Contact: tr14rc3@gmail.com
+*/
+
 #include <QThread>
 #include <QObject>
 #include <QDirIterator>
@@ -40,5 +48,6 @@ private:
     int lineNumberOfFilePaths;
     bool exitVirusListLoop;
     int expectedNumFilesToScan;
+    bool infectedFiles;
 };
 #endif // DIRECTORYSCAN_H
