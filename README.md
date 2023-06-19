@@ -23,7 +23,7 @@ Ethereum: 0x1521AFc76Ad1d124c3DfB9cdc790F2c8f99652e7
 
 ![ubuntu-logo-with-os-info-w3](https://user-images.githubusercontent.com/22214754/196061656-421dd522-86bc-4596-aa12-04a51b8627d3.png)              
 
-# **IDE:**     
+# **Work Environment:**     
 ![QtLogo](https://user-images.githubusercontent.com/22214754/179895211-d52559ab-35df-4fcc-bf69-7377739330d4.png)  
 Qt Creator 10.0.2    
 Based on Qt 6.4.3 (MSVC 2019, x86_64)    
