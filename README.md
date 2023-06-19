@@ -28,7 +28,7 @@ Ethereum: 0x1521AFc76Ad1d124c3DfB9cdc790F2c8f99652e7
 Qt Creator 10.0.2    
 Based on Qt 6.4.3 (MSVC 2019, x86_64)    
 Built on Jun 14 2023 01:21:18 
-From revision b1e4ed3b7c
+From revision b1e4ed3b7c  
 kit: 6.5.1
 https://www.qt.io/  
 
