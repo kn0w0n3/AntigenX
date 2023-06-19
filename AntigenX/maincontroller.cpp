@@ -1,17 +1,10 @@
 #include "maincontroller.h"
 
-/*
-Author: Jonathan Baird
-Date: 16NOV2022
-Purpose: Main controller for antivirus program
-Contact: tr14rc3@gmail.com
-*/
-
 MainController::MainController(QWidget *parent) :QWidget(parent){
     fileCount = 0;
 }
 
-//Funtction to scan a single file for viruses/malware on a separate thread.
+//Function to scan a single file for viruses/malware on a separate thread.
 void MainController::singleFileScan(){
     singleFileScanThread = new SingleScan();
     connect(singleFileScanThread, &SingleScan::scanStart, this, &MainController::handleScanStart);
@@ -40,8 +33,8 @@ void MainController::downloadSignatures(){
     updateThread = new QThread();
     updateController = new UpdateController();
     connect(updateController, &UpdateController::currentProgress, this, &MainController::updateProgressBar);
-    connect(updateController, &UpdateController::currentProgressFiles, this, &MainController::updateProgBarFileOps);
-    connect(updateController, &UpdateController::state, this, &MainController::updateStatus);
+    //connect(updateController, &UpdateController::currentProgressFiles, this, &MainController::updateProgBarFileOps);
+    //connect(updateController, &UpdateController::state, this, &MainController::updateStatus);
     //updateController->moveToThread(updateThread);
     connect(updateThread, &QThread::finished, updateController, &QObject::deleteLater);
     updateThread->start();
@@ -101,55 +94,18 @@ void MainController::displayInfectedFiles(QString files){
      }
 }
 
-void MainController::stopThread(){
-
-}
-
-QString MainController::getFiles(){
-    return theInfectedFile;
-}
-
-int MainController::getCurrentValue(){
-    return currentValue;
-}
-
-QString MainController::getTxtCurrentValue(){
-     txtBytestoQML = QString::number(currentValue);
-     //qDebug() << txtBytestoQML;
-     return txtBytestoQML;
-}
-
-int MainController::getTotalBytesValue(){
-    return totBytesVal;
-}
-
-QString MainController::getpBarText(){
-    return gValBarActivity;
-}
-
-bool MainController::getpBarVisibility(){
-    return gValBarVisibility;
-}
-
-void MainController::setFiles(QString){
-
-}
-
-void MainController::updateProgBarFileOps(int n){
-
-}
-
-void MainController::updateStatus(QString state){
-
-}
-
 //Function to check for malicious URLs using the Google Safe Browsing API.
+//On windows, openssl must be added from qtmaintenance tool. https://stackoverflow.com/questions/53805704/tls-initialization-failed-on-get-request
 void MainController::checkUrl(QString userSuppliedUrl){
 
-    urlToCheck  = userSuppliedUrl;
+    urlToCheck = userSuppliedUrl;
     qDebug()<<"In check checkUrl() function.........";
 
+
+    //Basically get the URL from user and put it in the JSON text to send to google. The JSON data must be converted to a byte array to send in the post rquest.
+    //TO try: Make one liner JSON and replace text with the URL and convert to a byte array instead of saving to file first.
     //Set the file path for the text file containing the JSON data
+    //This JSON file contains the google test site urls
     QFile jsonTextFile(jsonFilePath);
 
     //Check to see if the file is open for writing
@@ -167,16 +123,17 @@ void MainController::checkUrl(QString userSuppliedUrl){
     jsonByteArray = json_string.trimmed().toLocal8Bit();
     //qDebug() << "The JSON byte array data is: " << jsonByteArray;
 
-    qDebug() << "The Google string URL is: " << googleUrl;
+    qDebug() << "The Google safe browse string URL containing your API key is: " << googleUrl;
     QNetworkAccessManager *mgr = new QNetworkAccessManager(this);
 
+    //This is the google safe browse URL that includes your API key to send the test site info to.
     QUrl url = QUrl::fromUserInput(googleUrl);
-    //QUrl url = googleUrl;
+
     QNetworkRequest request(url);
-    qDebug() << "The URL data is: " << url.toString();
+    qDebug() << "The URL test site is: " << url.toString();
 
     if(url.isEmpty() == true){
-        qDebug() << "The URL is emppty..............";
+        qDebug() << "The URL is empty..............";
     }
 
     //Set header for JSON as specified by Google.
@@ -194,12 +151,32 @@ void MainController::checkUrl(QString userSuppliedUrl){
     QNetworkReply *reply = mgr->post(request, jsonByteArray);
     QObject::connect(reply, &QNetworkReply::finished, [=](){
         if(reply->error() == QNetworkReply::NoError){
-            //QByteArray arrayContents = reply->readAll();
+            //QByteArray byteArrayGoogleReplyContents = reply->readAll();
             QString contents = QString::fromUtf8(reply->readAll());
-            googleReplyData = contents;
-            emit urlResultsToQml(googleReplyData);
+            googleReplyData = contents.trimmed();
+            QByteArray byteArrayGoogleReplyContents = contents.toLocal8Bit().trimmed();
+
+            QJsonDocument json_doc = QJsonDocument::fromJson(byteArrayGoogleReplyContents);
+
+            //Start with an object
+            QJsonObject jsonObject = json_doc.object();
+
+            //Next theres a matches array
+            QJsonArray matchArray = jsonObject.value("matches").toArray();
+
+            //Get the first value in the array and convert to object
+            QJsonObject first = matchArray[0].toObject();
+
+            //Read the values of the object
+            QString threatType = first.value("threatType").toString();
+            QString platformType  = first.value("platformType").toString();
+            qDebug() << "The threaType is: " << threatType;
+            qDebug() << "The platformType is: " << platformType;
+
+            emit urlResultsToQml(" THREAT TYPE: " + threatType);
+            emit urlResultsToQml(" PLATFORM TYPE: " + platformType);
+
             qDebug() << "Reply from Google is: " << contents;
-            //qDebug() << "Saved Reply from Google is: " << contents;
             //Display the data on GUI labels.
         }
         else{

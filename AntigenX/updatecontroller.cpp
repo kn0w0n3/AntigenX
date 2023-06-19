@@ -1,12 +1,5 @@
 #include "updatecontroller.h"
 
-/*
-Author: Jonathan Baird
-Date: 16NOV2022
-Purpose: Update controller for antivirus program | Networking | Download Signatures
-Contact: tr14rc3@gmail.com
-*/
-
 UpdateController::UpdateController(){
 
     //Create the network access manager for dowloading updates/signature files.

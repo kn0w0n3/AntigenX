@@ -5,13 +5,6 @@
 #include <QQmlContext>
 #include <QApplication>
 
-/*
-Author: Jonathan Baird
-Date: 16NOV2022
-Purpose: Main Entry for Program | Setup signals and slots between C++ classes and QML
-Contact: tr14rc3@gmail.com
-*/
-
 int main(int argc, char *argv[]){
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)

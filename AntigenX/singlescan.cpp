@@ -1,12 +1,5 @@
 #include "singlescan.h"
 
-/*
-Author: Jonathan Baird
-Date: 16NOV2022
-Purpose: Thread for single scan
-Contact: tr14rc3@gmail.com
-*/
-
 SingleScan::SingleScan(QThread *parent) : QThread(parent){
     numScannedFiles = 0;
     fileInfected = false;

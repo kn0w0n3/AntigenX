@@ -25,6 +25,7 @@ Contact: tr14rc3@gmail.com
 //JSON Libs
 #include <QJsonObject>
 #include <QJsonDocument>
+#include <QJsonArray>
 #include <QString>
 
 //Developer Classes
@@ -79,22 +80,22 @@ public slots:
     void relayScanDoneSir(void);
 
     void displayInfectedFiles(QString);
-    void stopThread(void);
-    QString getFiles();
+    //void stopThread(void);
+    //QString getFiles();
 
     //Slots for progress bar
-    int getCurrentValue(void);
-    QString getTxtCurrentValue(void);
-    int getTotalBytesValue(void);
-    QString getpBarText();
+    //int getCurrentValue(void);
+    //QString getTxtCurrentValue(void);
+    //int getTotalBytesValue(void);
+    //QString getpBarText();
 
     void updateProgressBar(int, int);
-    void updateProgBarFileOps(int);
-    void setFiles(QString);
+    //void updateProgBarFileOps(int);
+    //void setFiles(QString);
     void downloadSignatures(void);
-    bool getpBarVisibility(void);
+    //bool getpBarVisibility(void);
 
-    void updateStatus(QString);
+    //void updateStatus(QString);
     void checkUrl(QString);
     void processNetworkData(QString);
 
@@ -121,9 +122,13 @@ private:
     //URL and JSON variables
     QJsonObject jSonObject;
     QString json_string;
-    QString jsonFilePath = "/home/voldem0rt/Documents/Qt_Projects/AntigenX-main/url-check-json2.txt";
-    QString googleUrl = "https://safebrowsing.googleapis.com/v4/threatMatches:find?key=YOUR_API_KEY";
-    //QString googleUrl = "https://safebrowsing.googleapis.com/v4/threatLists?key=YOUR_API_KEY";
+
+    //Linux Path
+    //QString jsonFilePath = "/home/voldem0rt/Documents/Qt_Projects/AntigenX-main/url-check-json2.txt";
+    //Windows Path
+    QString jsonFilePath = "C:/Users/Voldem0rt/Documents/Qt_Projects/AntigenX/url-check-json2.txt";
+    
+    QString googleUrl = "https://safebrowsing.googleapis.com/v4/threatLists?key=YOUR_API_KEY";
 
     QString urlToCheck = "";
     //QString apiKey = ""

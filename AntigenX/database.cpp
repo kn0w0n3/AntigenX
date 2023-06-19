@@ -1,17 +1,10 @@
 #include "database.h"
 
-/*
-Author: Jonathan Baird
-Date: 16NOV2022
-Purpose: Database for storing signatures, logs and other data
-Contact: tr14rc3@gmail.com
-*/
-
 Database::Database(QObject *parent) : QObject(parent){
 
     //mainWinDB = QSqlDatabase::addDatabase("QSQLITE", "conn1");
 
-mainWinDB.setDatabaseName("/home/voldem0rt/Desktop/AntigenX-main/db/program_info.db");
+mainWinDB.setDatabaseName("C:/Users/Voldem0rt/Documents/Qt_Projects/AntigenX/db/program_info.db");
     //qDebug() << "The available drivers are : " << mainWinDB.drivers();
 
     //For now, do an initial check to see if the connections are working.
@@ -37,7 +30,7 @@ void Database::getMainWinGuiInfo(QString mwStatusF, QString mwlastFullScanF, QSt
 void Database::getMainWinDBInfo(){
     //billDB = QSqlDatabase::addDatabase("QSQLITE", "conn2-BillInfo");
     //billDB.setDatabaseName("C:/Users/Documents/Qt_Projects/Bill-Bot/database/bill_info.db");
-//QSqlDatabase mainWinDB =  QSqlDatabase::addDatabase("QSQLITE","conn1-MainWinInfo");
+    //QSqlDatabase mainWinDB =  QSqlDatabase::addDatabase("QSQLITE","conn1-MainWinInfo");
 
 
     if(!mainWinDB.open()){
@@ -50,12 +43,13 @@ void Database::getMainWinDBInfo(){
     //qDebug() << "SQL error: "<< igetMainWinDBInfo.lastError().text() << endl;
     QSqlQuery x(QSqlDatabase::database("conn1-MainWinInfo"));
     x.prepare("SELECT mw-status, mw-last-full-scan, mw-last-smart-scan, mw-last-single-scan, mw-last-update, mw-threats-found, mw-current-threats FROM main-win-info WHERE id > 0");
+
    if (!x.exec()){
-        qDebug() << "SQL error: "<< x.lastError().text() << endl;
+        qDebug() << "SQL error: "<< x.lastError().text() << Qt::endl;
     }
-qDebug() << "SQL error: "<< x.lastError().text() << endl;
+    qDebug() << "SQL error: "<< x.lastError().text() << Qt::endl;
     while(x.next()){
-qDebug() << "SQL error: "<< x.lastError().text() << endl;
+    qDebug() << "SQL error: "<< x.lastError().text() << Qt::endl;
         qDebug() << "In DB function................";
         mwStatus = x.value(0).toString();
         qDebug() << "mwStatus: " + mwStatus.trimmed();
@@ -65,7 +59,7 @@ qDebug() << "SQL error: "<< x.lastError().text() << endl;
 
 void Database::setMainWinInfo2Db(){
     QSqlDatabase mainWinDB =  QSqlDatabase::addDatabase("QSQLITE");
-    mainWinDB.setDatabaseName("/home/voldem0rt/Desktop/AntigenX-main/db/program_info.db");
+    mainWinDB.setDatabaseName("C:/Users/Voldem0rt/Documents/Qt_Projects/AntigenX/db/program_info.db");
     if(!mainWinDB.open()){
         qDebug() << "Database Not Connected..........";
     }

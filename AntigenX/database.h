@@ -47,7 +47,10 @@ private:
 
     //Connections for working with different tables simultaneously.
     QSqlDatabase mainWinDB =  QSqlDatabase::addDatabase("QSQLITE","conn1-MainWinInfo");
-    QString mainWInDbPath = "/home/voldem0rt/Desktop/AntigenX-main/db/program_info.db";
+    //Linux Path
+    //QString mainWInDbPath = "/home/voldem0rt/Desktop/AntigenX-main/db/program_info.db";
+    //Windows path
+    QString mainWInDbPath = "C:/Users/Voldem0rt/Documents/Qt_Projects/AntigenX/db/program_info.db";
 
 };
 

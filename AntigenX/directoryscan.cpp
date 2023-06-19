@@ -1,12 +1,5 @@
 #include "directoryscan.h"
 
-/*
-Author: Jonathan Baird
-Date: 16NOV2022
-Purpose: Thread for directory scan
-Contact: tr14rc3@gmail.com
-*/
-
 DirectoryScan::DirectoryScan(QThread *parent) : QThread(parent){
    lineNumberOfVirusFile = 0;
    numberOfHashesTested = 0;

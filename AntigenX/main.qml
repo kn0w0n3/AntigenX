@@ -2,8 +2,10 @@ import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
 import QtQml.Models 2.12
-import QtQuick.Controls.Styles 1.4
+//import QtQuick.Controls.Styles 1.4
+//import Qt5Compat.Styles
 import QtMultimedia 5.12
+import QtMultimedia //Fix for Qt6 https://doc.qt.io/qt-6/qtmultimedia-index.html
 import QtQuick.Layouts 1.12
 
 //Video Issues - no codecs
@@ -30,7 +32,7 @@ Window {
         target: mainController
 
         onUrlResultsToQml:{
-            scanWinScrollViewText.text += urlResut_1
+            scanWinScrollViewText.text += urlResut_1 + "\n"
         }
 
         onUrlScanComplete:{
@@ -48,7 +50,6 @@ Window {
 
         onDNumFilesScanned:{
             numFilesScanned.text = dirNumFilesScaned_X
-
         }
 
         onDInfectedFiles:{
@@ -800,21 +801,22 @@ Window {
 
             ScrollView {
                 id: scanWinScrollView
-                x: 8
-                y: 8
-                width: 690
-                height: 307
+                x: 2
+                y: 2
+                width: 702
+                height: 319
                 clip: true
                 ScrollBar.vertical.policy: ScrollBar.AsNeeded
                 ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
 
                 TextArea {
                     id: scanWinScrollViewText
-                    x: -10
-                    y: -6
+                    x: -7
+                    y: -3
                     text: qsTr("")
                     clip: true
                     color: "#ffffff"
+                     background: Rectangle {color: "black"}
                 }
             }
         }
@@ -1543,3 +1545,9 @@ Window {
 
 
 
+
+/*##^##
+Designer {
+    D{i:0;formeditorZoom:0.75}
+}
+##^##*/
