@@ -25,14 +25,12 @@ Ethereum: 0x1521AFc76Ad1d124c3DfB9cdc790F2c8f99652e7
 
 # **IDE:**     
 ![QtLogo](https://user-images.githubusercontent.com/22214754/179895211-d52559ab-35df-4fcc-bf69-7377739330d4.png)  
-Qt Creator 4.12.3  
-Based on Qt 5.14.2 (MSVC 2017, 32 bit)  
-Built on Jun 16 2020 01:19:17  
-From revision 48e46132e3  
-https://www.qt.io/ 
-
-Framework:  
-Qt framework 5.15.0 
+Qt Creator 10.0.2    
+Based on Qt 6.4.3 (MSVC 2019, x86_64)    
+Built on Jun 14 2023 01:21:18 
+From revision b1e4ed3b7c
+kit: 6.5.1
+https://www.qt.io/  
 
 # **Database:**        
 ![sqlitefg](https://user-images.githubusercontent.com/22214754/179894516-3059e142-fb38-40bc-a32c-65500a223eb1.png)    
