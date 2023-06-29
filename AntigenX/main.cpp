@@ -22,6 +22,6 @@ int main(int argc, char *argv[]){
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     engine.load(url);
-
+    app.setWindowIcon(QIcon(":/images/antigenx_icon.png"));
     return app.exec();
 }

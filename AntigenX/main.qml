@@ -107,15 +107,15 @@ Window {
         //Experiment Video
         Video {
             id: videoX
-            x: 100
-            y: 4
-            //width : 1180
-            //height : 716
+            x: 0
+            y: 0
+            width : 1280
+            height : 720
             visible: false
             //source: "/home/voldem0rt/Documents/Qt_Projects/AntigenX-main/video/lightning.avi"
             source: "qrc:/video/lightning.mp4"
             fillMode: VideoOutput.PreserveAspectCrop
-            anchors.leftMargin: 100
+            //anchors.leftMargin: 100
             clip: false
             anchors.fill: parent
 
@@ -192,43 +192,43 @@ Window {
         id: sidepanel
         x: 0
         y: 0
-        width: 100
+        width: 59
         height: 720
         color: "#14ffffff"
         visible: true
 
         Image {
             id: homeWinBtn
-            x: 18
-            y: 26
-            width: 65
-            height: 75
-            source: "images/home_btn.png"
+            x: 7
+            y: 8
+            width: 45
+            height: 45
+            source: "images/home_btn2.png"
             fillMode: Image.PreserveAspectFit
 
             MouseArea {
                 id: homeWinMouseArea
                 x: 0
                 y: 0
-                width: 66
-                height: 75
+                width: 45
+                height: 45
                 visible: true
                 hoverEnabled: true
                 onEntered: {
-                    homeWinBtn.width = 68
-                    homeWinBtn.height = 78
+                    homeWinBtn.width = 48
+                    homeWinBtn.height = 48
                 }
                 onExited: {
-                    homeWinBtn.width = 65
-                    homeWinBtn.height = 75
+                    homeWinBtn.width = 45
+                    homeWinBtn.height = 45
                 }
                 onPressed: {
-                    homeWinBtn.width = 65
-                    homeWinBtn.height = 75
+                    homeWinBtn.width = 45
+                    homeWinBtn.height = 45
                 }
                 onReleased: {
-                    homeWinBtn.width = 68
-                    homeWinBtn.height = 78
+                    homeWinBtn.width = 48
+                    homeWinBtn.height = 48
                 }
                 onClicked: {
                     if(!scanWin.visible == false){
@@ -250,35 +250,35 @@ Window {
 
         Image {
             id: scanWinBtn
-            x: 18
-            y: 123
-            width: 65
-            height: 75
-            source: "images/scan_btn.png"
+            x: 7
+            y: 68
+            width: 45
+            height: 45
+            source: "images/scan_btn2.png"
             fillMode: Image.PreserveAspectFit
 
             MouseArea {
                 id: scanWinMouseArea
                 x: 0
                 y: 0
-                width: 65
-                height: 75
+                width: 45
+                height: 45
                 hoverEnabled: true
                 onEntered: {
-                    scanWinBtn.width = 68
-                    scanWinBtn.height = 78
+                    scanWinBtn.width = 48
+                    scanWinBtn.height = 48
                 }
                 onExited: {
-                    scanWinBtn.width = 65
-                    scanWinBtn.height = 75
+                    scanWinBtn.width = 45
+                    scanWinBtn.height = 45
                 }
                 onPressed: {
-                    scanWinBtn.width = 65
-                    scanWinBtn.height = 75
+                    scanWinBtn.width = 45
+                    scanWinBtn.height = 45
                 }
                 onReleased: {
-                    scanWinBtn.width = 68
-                    scanWinBtn.height = 78
+                    scanWinBtn.width = 48
+                    scanWinBtn.height = 48
                 }
                 onClicked: {
                     if(!mainWin.visible == false){
@@ -301,11 +301,11 @@ Window {
 
         Image {
             id: toolsWinBtn
-            x: 18
-            y: 624
-            width: 65
-            height: 75
-            source: "images/tools_btn.png"
+            x: 7
+            y: 246
+            width: 45
+            height: 45
+            source: "images/tools_btn2.png"
             fillMode: Image.PreserveAspectFit
 
             MouseArea {
@@ -313,24 +313,24 @@ Window {
 
                 x: 0
                 y: 0
-                width: 65
-                height: 75
+                width: 45
+                height: 45
                 hoverEnabled: true
                 onEntered: {
-                    toolsWinBtn.width = 68
-                    toolsWinBtn.height = 78
+                    toolsWinBtn.width = 48
+                    toolsWinBtn.height = 48
                 }
                 onExited: {
-                    toolsWinBtn.width = 65
-                    toolsWinBtn.height = 75
+                    toolsWinBtn.width = 45
+                    toolsWinBtn.height = 45
                 }
                 onPressed: {
-                    toolsWinBtn.width = 65
-                    toolsWinBtn.height = 75
+                    toolsWinBtn.width = 45
+                    toolsWinBtn.height = 45
                 }
                 onReleased: {
-                    toolsWinBtn.width = 68
-                    toolsWinBtn.height = 78
+                    toolsWinBtn.width = 48
+                    toolsWinBtn.height = 48
                 }
                 onClicked: {
                     if(!mainWin.visible == false){
@@ -354,34 +354,34 @@ Window {
 
         Image {
             id: updatesBtnImg
-            x: 18
-            y: 215
-            width: 65
-            height: 75
+            x: 7
+            y: 128
+            width: 45
+            height: 45
             MouseArea {
                 id: updatesBtnMouseArea
                 x: 0
                 y: 0
-                width: 66
-                height: 75
+                width: 45
+                height: 45
 
                 visible: true
                 hoverEnabled: true
                 onEntered: {
-                    updatesBtnImg.width = 68
-                    updatesBtnImg.height = 78
+                    updatesBtnImg.width = 48
+                    updatesBtnImg.height = 48
                 }
                 onExited: {
-                    updatesBtnImg.width = 65
-                    updatesBtnImg.height = 75
+                    updatesBtnImg.width = 45
+                    updatesBtnImg.height = 45
                 }
                 onPressed: {
-                    updatesBtnImg.width = 65
-                    updatesBtnImg.height = 75
+                    updatesBtnImg.width = 45
+                    updatesBtnImg.height = 45
                 }
                 onReleased: {
-                    updatesBtnImg.width = 68
-                    updatesBtnImg.height = 78
+                    updatesBtnImg.width = 48
+                    updatesBtnImg.height = 48
                 }
                 onClicked: {
                     if(!mainWin.visible == false){
@@ -401,38 +401,38 @@ Window {
                 }
             }
             fillMode: Image.PreserveAspectFit
-            source: "images/updates_icon.png"
+            source: "images/updates_icon2.png"
         }
 
         Image {
             id: vpnBtnImg
-            x: 18
-            y: 308
-            width: 65
-            height: 75
-            source: "images/vpn-button.png"
+            x: 7
+            y: 187
+            width: 45
+            height: 45
+            source: "images/vpn-button2.png"
             MouseArea {
                 id: vpnBtnMouseArea
                 x: 0
                 y: 0
-                width: 65
-                height: 75
+                width: 45
+                height: 45
                 hoverEnabled: true
                 onEntered: {
-                    vpnBtnImg.width = 68
-                    vpnBtnImg.height = 78
+                    vpnBtnImg.width = 48
+                    vpnBtnImg.height = 48
                 }
                 onExited: {
-                    vpnBtnImg.width = 65
-                    vpnBtnImg.height = 75
+                    vpnBtnImg.width = 45
+                    vpnBtnImg.height = 45
                 }
                 onPressed: {
-                    vpnBtnImg.width = 65
-                    vpnBtnImg.height = 75
+                    vpnBtnImg.width = 45
+                    vpnBtnImg.height = 45
                 }
                 onReleased: {
-                    vpnBtnImg.width = 68
-                    vpnBtnImg.height = 78
+                    vpnBtnImg.width = 48
+                    vpnBtnImg.height = 48
                 }
                 onClicked: {
                     if(!mainWin.visible == false){
@@ -451,6 +451,16 @@ Window {
                     //maincontroller.test2("Hello world")
                 }
             }
+            fillMode: Image.PreserveAspectFit
+        }
+
+        Image {
+            id: menuCLoseBtnImg
+            x: 7
+            y: 667
+            width: 45
+            height: 45
+            source: "images/GmenuClose.png"
             fillMode: Image.PreserveAspectFit
         }
     }
@@ -569,7 +579,7 @@ Window {
                 width: 106
                 height: 23
                 color: "#ffffff"
-                text: qsTr("7/30/22")
+                text: qsTr("7/30/23")
                 font.bold: true
                 font.pixelSize: 16
             }
@@ -593,7 +603,7 @@ Window {
                 width: 89
                 height: 20
                 color: "#ffffff"
-                text: "7/29/22"
+                text: "7/29/23"
                 font.bold: true
                 font.pixelSize: 16
             }
@@ -726,7 +736,7 @@ Window {
                     //TODO: Implement sqlite db to store information
                 }
             }
-            source: "images/checkUpdatesBtn.png"
+            source: "images/checkUpdatesBtn2.png"
         }
 
         Text {
@@ -827,7 +837,7 @@ Window {
             y: 486
             width: 133
             height: 38
-            source: "images/rmv-selected-btn.png"
+            source: "images/rmv-selected-btn2.png"
             fillMode: Image.PreserveAspectFit
 
             MouseArea {
@@ -863,7 +873,7 @@ Window {
             width: 133
             height: 38
             visible: true
-            source: "images/remove_all_button.png"
+            source: "images/remove_all_button2.png"
             MouseArea {
                 id: mouse_area_remove_all
                 x: 0
@@ -897,7 +907,7 @@ Window {
             y: 486
             width: 133
             height: 38
-            source: "images/abort_scan_button.png"
+            source: "images/abort_scan_button2.png"
             MouseArea {
                 id: mouse_area_abort_scan
                 x: 0
@@ -931,7 +941,7 @@ Window {
             y: 147
             width: 133
             height: 38
-            source: "images/scan-file-btn.png"
+            source: "images/scan_butto2n.png"
             MouseArea {
                 id: mouse_area_single_scan
                 x: 0
@@ -968,7 +978,7 @@ Window {
             y: 204
             width: 133
             height: 38
-            source: "images/scan-dir-btn.png"
+            source: "images/scan_dir_button2.png"
             fillMode: Image.PreserveAspectFit
 
             MouseArea {
@@ -1009,7 +1019,7 @@ Window {
             width: 133
             height: 38
             visible: true
-            source: "images/full-scan-button-11-2-22.png"
+            source: "images/full-scan-button2.png"
             MouseArea {
                 id: mouseAreaFullScan
                 x: 0
@@ -1120,7 +1130,7 @@ Window {
             y: 587
             width: 133
             height: 38
-            source: "images/scan-url-button-11-2-22.png"
+            source: "images/scan-url-button2.png"
             MouseArea {
                 id: scanUrlMouseArea
                 x: 0
@@ -1182,7 +1192,7 @@ Window {
             width: 133
             height: 38
             visible: true
-            source: "images/add-sigl-button-11-2-22.png"
+            source: "images/add-sigl-button2.png"
             MouseArea {
                 id: mouseAreaAddSig
                 x: 0
@@ -1218,7 +1228,7 @@ Window {
             width: 133
             height: 38
             visible: true
-            source: "images/run-sndbx-btn.png"
+            source: "images/run-sndbx-btn2.png"
             MouseArea {
                 id: mouseArearunSndbx
                 x: 0
@@ -1246,7 +1256,7 @@ Window {
             width: 133
             height: 38
             visible: true
-            source: "images/quick-scan-btn.png"
+            source: "images/quick-scan-btn2.png"
             MouseArea {
                 id: mouseAreaQuickScan
                 x: 0
@@ -1377,7 +1387,7 @@ Window {
                 width: 142
                 height: 28
                 color: "#ffffff"
-                text: qsTr("11/2/2022")
+                text: qsTr("11/2/2023")
                 font.pixelSize: 20
                 font.bold: true
                 Connections {
@@ -1395,7 +1405,7 @@ Window {
                 width: 142
                 height: 28
                 color: "#ffffff"
-                text: "11/2/2022"
+                text: "11/2/2023"
                 font.pixelSize: 20
                 font.bold: true
                 Connections {
@@ -1485,7 +1495,7 @@ Window {
                 width: 142
                 height: 28
                 color: "#ffffff"
-                text: "10/31/2022"
+                text: "10/31/2023"
                 font.pixelSize: 20
                 font.bold: true
                 Connections {
@@ -1503,7 +1513,7 @@ Window {
                 width: 142
                 height: 28
                 color: "#ffffff"
-                text: "10/4/2022"
+                text: "10/4/2023"
                 font.pixelSize: 20
                 font.bold: true
                 Connections {

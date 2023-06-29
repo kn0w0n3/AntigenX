@@ -127,8 +127,7 @@ private:
     //QString jsonFilePath = "/home/voldem0rt/Documents/Qt_Projects/AntigenX-main/url-check-json2.txt";
     //Windows Path
     QString jsonFilePath = "C:/Users/Voldem0rt/Documents/Qt_Projects/AntigenX/url-check-json2.txt";
-    
-    QString googleUrl = "https://safebrowsing.googleapis.com/v4/threatLists?key=YOUR_API_KEY";
+    //QString googleUrl = "https://safebrowsing.googleapis.com/v4/threatLists?key=YOUR_API_KEY";
 
     QString urlToCheck = "";
     //QString apiKey = ""
