@@ -1,4 +1,4 @@
-![github readme header 2](https://user-images.githubusercontent.com/22214754/196063614-bfe17689-e62b-4a37-bf9a-6952ea93aa51.png)        
+![antigenX](https://github.com/kn0w0n3/AntigenX/assets/22214754/b423d3dc-9f01-47f7-81f2-f0e22a75465b)     
      
 AntigenX is an antivirus program being developed specifically for Linux. This goal of this project is to provide a free, reliable, and open source antivirus solution that will deliver protection for average and advanced users. AntigenX will include:  
 
