@@ -8,12 +8,7 @@ AntigenX is an antivirus program being developed specifically for Linux. This go
 * Virus and Malware Detection 
 * GUI Interface   
  
-![AX-GUI-6-29-23](https://github.com/kn0w0n3/AntigenX/assets/22214754/296a46f4-01a1-4439-9c47-d646cb746e23)     
-
-# Support the project:  
-If you would like to support the project, please consider making a donation!  
-Bitcoin: 3HWf1TTb7MCPEtXEwC4fwN7tH4UEHfaqXB    
-Ethereum: 0x1521AFc76Ad1d124c3DfB9cdc790F2c8f99652e7      
+![AX-GUI-6-29-23](https://github.com/kn0w0n3/AntigenX/assets/22214754/296a46f4-01a1-4439-9c47-d646cb746e23)         
         
 # Developed with:  
 
