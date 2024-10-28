@@ -1,13 +1,6 @@
 #ifndef DATABASE_H
 #define DATABASE_H
 
-/*
-Author: Jonathan Baird
-Date: 16NOV2022
-Purpose: Database for storing signatures, logs and other data
-Contact: tr14rc3@gmail.com
-*/
-
 #include <QObject>
 #include <QSql>
 #include <QSqlQuery>
