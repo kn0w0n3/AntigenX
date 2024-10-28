@@ -1,13 +1,6 @@
 #ifndef SINGLESCAN_H
 #define SINGLESCAN_H
 
-/*
-Author: Jonathan Baird
-Date: 16NOV2022
-Purpose: Thread for single scan
-Contact: tr14rc3@gmail.com
-*/
-
 #include <QThread>
 #include <QObject>
 #include <QFileDialog>
