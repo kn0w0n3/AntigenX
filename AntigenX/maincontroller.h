@@ -1,13 +1,6 @@
 #ifndef MAINCONTROLLER_H
 #define MAINCONTROLLER_H
 
-/*
-Author: Jonathan Baird
-Date: 16NOV2022
-Purpose: Main controller for antivirus program
-Contact: tr14rc3@gmail.com
-*/
-
 #include <QObject>
 #include <QThread>
 #include <QWidget>
